@@ -1,0 +1,72 @@
+html, body {
+    height: 100%;
+    font-size: 14px;
+}
+.navbar {
+    padding-left: 5px;
+}
+.nav-logo {
+    padding: 0;
+    margin: 5px;
+    margin-bottom: 0;
+}
+.container-fluid {
+    padding: 20px;
+    height: 90%;
+}
+
+/* my-list-group */
+.my-list-group-header-icon {
+    width: 60px;
+    height: 50px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 24px 24px;
+}
+.my-list-group-header-title {
+    padding-top: 14px;
+    font-size: 14px;
+    font-weight: bold;
+}
+.my-list-group-header-btns {
+    padding: 12px 20px;
+}
+.my-list-group-body {
+    padding: 18px;
+    padding-bottom: 0;
+}
+
+/* my-table */
+.my-table-index {
+    width: 50px;
+    text-align: center;
+}
+.my-table-btns {
+    width: 120px;
+    text-align: center;
+}
+.btn.my-table-btn {
+    padding: 0 10px;
+    font-size: 11px;
+    margin-bottom: 2px;
+}
+
+/* my-form-group */
+.my-form-group-header-icon {
+    width: 60px;
+    height: 50px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 24px 24px;
+}
+.my-form-group-header-title {
+    padding-top: 14px;
+    font-size: 14px;
+    font-weight: bold;
+}
+.my-form-group-body {
+    padding: 18px;
+}
+.my-form-group-footer {
+    padding: 18px;
+}
