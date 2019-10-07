@@ -27,6 +27,7 @@ html, body {
     padding-top: 14px;
     font-size: 14px;
     font-weight: bold;
+    color: #39D;
 }
 .my-list-group-header-btns {
     padding: 12px 20px;
@@ -37,8 +38,8 @@ html, body {
 }
 
 /* my-table */
-.my-table-index {
-    width: 50px;
+.my-table-code {
+    width: 80px;
     text-align: center;
 }
 .my-table-btns {
@@ -63,9 +64,11 @@ html, body {
     padding-top: 14px;
     font-size: 14px;
     font-weight: bold;
+    color: #39D;
 }
 .my-form-group-body {
     padding: 18px;
+    padding-bottom: 0;
 }
 .my-form-group-footer {
     padding: 18px;

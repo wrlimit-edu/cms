@@ -21,17 +21,39 @@
                             </a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link btn-sm" id="navbarClients" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link btn-sm" id="navbarPersons" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Клиенты
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarClients">
-                                <a class="dropdown-item btn-sm" href="/country/list">Страны</a>
-                                <a class="dropdown-item btn-sm" href="/region/list">Регионы</a>
-                                <a class="dropdown-item btn-sm" href="/city/list">Гогода</a>
+                            <div class="dropdown-menu" aria-labelledby="navbarPersons">
+                                <a class="dropdown-item btn-sm" href="/person/list">Все клиенты</a>
+                                <a class="dropdown-item btn-sm" href="#">Поиск клиента</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item btn-sm" href="/country/add">Добавить страну</a>
+                                <a class="dropdown-item btn-sm" href="#">Добавить клиента</a>
                             </div>
                         </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link btn-sm" id="navbarDocs" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Документы
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDocs">
+                                <a class="dropdown-item btn-sm" href="/doc/list">Все документы</a>
+                                <a class="dropdown-item btn-sm" href="#">---</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item btn-sm" href="#">---</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link btn-sm" id="navbarProducts" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Продукты
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarProducts">
+                                <a class="dropdown-item btn-sm" href="/product/list">Все продукты</a>
+                                <a class="dropdown-item btn-sm" href="#">---</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item btn-sm" href="#">---</a>
+                            </div>
+                        </li>
+
                         <li class="nav-item dropdown">
                             <a class="nav-link btn-sm" id="navbarSettings" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Настройки

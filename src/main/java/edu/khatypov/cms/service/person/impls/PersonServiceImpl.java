@@ -4,6 +4,7 @@ import edu.khatypov.cms.model.Person;
 import edu.khatypov.cms.repository.PersonRepository;
 import edu.khatypov.cms.service.person.interfaces.IPersonService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -25,12 +26,12 @@ public class PersonServiceImpl implements IPersonService {
                         Arrays.asList(
                                 new Person(1, "Иван", "Андреевич", "Фролов", true, "0501234567", "Черновцы, Главная 55/123", 5),
                                 new Person(2, "Наталья", "Васильевна", "Соколова", false, "0975252525", "Черновцы, Садовая 15/23", 0),
-                                new Person(3, "Василий", "Васильевич", "Васильев", true, "0503454532", "Черновцы, Тихая 64/84", 3)
+                                new Person(3, "Сергей", "Владимирович", "Нестеров", true, "0503454532", "Черновцы, Тихая 64/84", 3)
                         )
                 )
         );
     }
-
+    /* end temp */
 
     @Override
     public Person create(Person person) {
@@ -56,6 +57,6 @@ public class PersonServiceImpl implements IPersonService {
 
     @Override
     public List<Person> getAll() {
-        return personRepository.findAll();
+        return personRepository.findAll(Sort.by(Sort.Direction.ASC, "lastName"));
     }
 }
