@@ -73,3 +73,8 @@ html, body {
 .my-form-group-footer {
     padding: 18px;
 }
+
+/* my-form */
+.my-form-radiobutton {
+    color: #3399DD;
+}
