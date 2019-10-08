@@ -15,6 +15,7 @@ public class PersonWebController {
     @Autowired
     PersonServiceImpl personService;
 
+    /*
     @RequestMapping("/add")
     public String add() {
         return "/person/add";
@@ -25,17 +26,14 @@ public class PersonWebController {
         personService.create(person);
         return "redirect:/person/list";
     }
+    */
 
 
-
-
-
-    /*
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String add(Model model){
         PersonForm personForm = new PersonForm();
         model.addAttribute("personForm", personForm);
-        return "person/add";
+        return "/person/add";
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
@@ -51,9 +49,9 @@ public class PersonWebController {
                 0
         );
         personService.create(person);
-        return "redirect:person/list";
+        return "redirect:/person/list";
     }
-    */
+
 
 
 
