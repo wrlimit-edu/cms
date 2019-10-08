@@ -42,35 +42,28 @@
                             <@spring.formInput "personForm.address" "class='form-control'" "text"/>
                         </div>
                     </div>
-                    <#--
+
                     <div class="form-group row">
-                        <label for="discount" class="col-sm-3 col-form-label">Скидка</label>
+                        <label class="col-sm-3 col-form-label">Скидка</label>
                         <div class="col-sm-9">
-                            <select name="discount" id="discount" class="form-control">
-                                <option value="0" selected>Нет скидки</option>
-                                <option value="3">3%</option>
-                                <option value="5">5%</option>
-                                <option value="7">7%</option>
-                                <option value="10">10%</option>
-                                <option value="15">15%</option>
-                                <option value="20">20%</option>
-                            </select>
+                            <@spring.formSingleSelect "personForm.discount", discountMap, "class='form-control'"/>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <label for="gender" class="col-sm-3 col-form-label">Пол</label>
-                        <div class="col-sm-9" style="padding-top: 6px;">
-                            <div class="form-check form-check-inline" style="padding-right: 50px">
-                                <input name="gender" id="inlineRadio1" class="form-check-input" type="radio" value="true" checked>
-                                <label for="inlineRadio1" class="form-check-label">Мужской</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input name="gender" id="inlineRadio2" class="form-check-input" type="radio" value="false">
-                                <label for="inlineRadio2" class="form-check-label">Женский</label>
-                            </div>
-                        </div>
-                    </div>
-                    -->
+                    <#--
+                   <div class="form-group row">
+                       <label for="gender" class="col-sm-3 col-form-label">Пол</label>
+                       <div class="col-sm-9" style="padding-top: 6px;">
+                           <div class="form-check form-check-inline" style="padding-right: 50px">
+                               <input name="gender" id="inlineRadio1" class="form-check-input" type="radio" value="true" checked>
+                               <label for="inlineRadio1" class="form-check-label">Мужской</label>
+                           </div>
+                           <div class="form-check form-check-inline">
+                               <input name="gender" id="inlineRadio2" class="form-check-input" type="radio" value="false">
+                               <label for="inlineRadio2" class="form-check-label">Женский</label>
+                           </div>
+                       </div>
+                   </div>
+                   -->
                 </li>
                 <li class="list-group-item text-right my-form-group-footer">
                     <input type="submit" value="Сохранить"  class="btn btn-sm btn-outline-secondary"/>

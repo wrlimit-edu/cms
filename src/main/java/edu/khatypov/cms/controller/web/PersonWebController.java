@@ -8,6 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RequestMapping("/person")
 @CrossOrigin("*")
 @Controller
@@ -30,14 +33,27 @@ public class PersonWebController {
 
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public String add(Model model){
+    public String add(Model model) {
+
+        Map<String, String> discountMap = new HashMap<>();
+
+        discountMap.put("0", "Нет скидки");
+        discountMap.put("3", "3%");
+        discountMap.put("5", "5%");
+        discountMap.put("7", "7%");
+        discountMap.put("10", "10%");
+        discountMap.put("15", "15%");
+        discountMap.put("20", "20%");
+
         PersonForm personForm = new PersonForm();
         model.addAttribute("personForm", personForm);
+        model.addAttribute("discountMap", discountMap);
         return "/person/add";
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     String postAdd(Model model, @ModelAttribute("personForm") PersonForm personForm) {
+
         Person person = new Person(
                 0,
                 personForm.getFirstName(),
