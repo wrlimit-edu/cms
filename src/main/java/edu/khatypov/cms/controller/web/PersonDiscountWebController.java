@@ -19,4 +19,8 @@ public class PersonDiscountWebController {
         model.addAttribute("persons", personDiscountService.getAll());
         return "/personDiscount/list";
     }
+
+
+
+
 }
