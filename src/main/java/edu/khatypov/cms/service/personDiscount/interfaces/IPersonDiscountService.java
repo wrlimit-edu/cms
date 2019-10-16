@@ -1,13 +1,13 @@
 package edu.khatypov.cms.service.personDiscount.interfaces;
 
-import edu.khatypov.cms.model.PersonDiscount;
+import edu.khatypov.cms.model.CustomerDiscount;
 
 import java.util.List;
 
 public interface IPersonDiscountService {
-    PersonDiscount create(PersonDiscount personDiscount);
-    PersonDiscount get(String id);
-    PersonDiscount update(PersonDiscount personDiscount);
-    PersonDiscount delete(String id);
-    List<PersonDiscount> getAll();
+    CustomerDiscount create(CustomerDiscount personDiscount);
+    CustomerDiscount get(String id);
+    CustomerDiscount update(CustomerDiscount personDiscount);
+    CustomerDiscount delete(String id);
+    List<CustomerDiscount> getAll();
 }

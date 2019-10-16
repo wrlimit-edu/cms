@@ -6,16 +6,16 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.Objects;
 
 @Document
-public class PersonDiscount {
+public class CustomerDiscount {
     @Id
     private String id;
     private String name;
     private int value;
 
-    public PersonDiscount() {
+    public CustomerDiscount() {
     }
 
-    public PersonDiscount(String name, int value) {
+    public CustomerDiscount(String name, int value) {
         this.name = name;
         this.value = value;
     }
@@ -46,7 +46,7 @@ public class PersonDiscount {
 
     @Override
     public String toString() {
-        return "PersonDiscount{" +
+        return "CustomerDiscount{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", value=" + value +
@@ -57,8 +57,8 @@ public class PersonDiscount {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        PersonDiscount that = (PersonDiscount) o;
-        return id.equals(that.id);
+        CustomerDiscount that = (CustomerDiscount) o;
+        return Objects.equals(id, that.id);
     }
 
     @Override

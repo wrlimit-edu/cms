@@ -1,10 +1,9 @@
 package edu.khatypov.cms.repository;
 
-import edu.khatypov.cms.model.Person;
+import edu.khatypov.cms.model.Customer;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PersonRepository extends MongoRepository<Person, String> {
-    //Person findTopByOrderByNumberDesc();
+public interface CustomerRepository extends MongoRepository<Customer, String> {
 }

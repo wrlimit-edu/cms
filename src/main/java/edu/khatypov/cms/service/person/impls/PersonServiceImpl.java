@@ -7,31 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Service
 public class PersonServiceImpl implements IPersonService {
     @Autowired
     PersonRepository personRepository;
-
-    /* temp */
-    @PostConstruct
-    void init() {
-        personRepository.deleteAll();
-        personRepository.saveAll(
-                new ArrayList<>(
-                        Arrays.asList(
-                                new Person(1, "Иван", "Андреевич", "Фролов", true, "0501234567", "Черновцы, Главная 55/123", 5),
-                                new Person(2, "Наталья", "Васильевна", "Соколова", false, "0975252525", "Черновцы, Садовая 15/23", 0),
-                                new Person(3, "Сергей", "Владимирович", "Нестеров", true, "0503454532", "Черновцы, Тихая 64/84", 3)
-                        )
-                )
-        );
-    }
-    /* end temp */
 
     @Override
     public Person create(Person person) {

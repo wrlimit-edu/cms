@@ -1,7 +1,6 @@
 package edu.khatypov.cms.service.personDiscount.impls;
 
-import edu.khatypov.cms.model.PersonDiscount;
-import edu.khatypov.cms.repository.PersonDiscountRepository;
+import edu.khatypov.cms.model.CustomerDiscount;
 import edu.khatypov.cms.service.personDiscount.interfaces.IPersonDiscountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,13 +22,13 @@ public class PersonDiscountServiceImpl implements IPersonDiscountService {
         personDiscountRepository.saveAll(
                 new ArrayList<>(
                         Arrays.asList(
-                                new PersonDiscount("Нет скидки", 0),
-                                new PersonDiscount("Скидка 3%", 3),
-                                new PersonDiscount("Скидка 5%", 5),
-                                new PersonDiscount("Скидка 7%", 7),
-                                new PersonDiscount("Скидка 10%", 10),
-                                new PersonDiscount("Скидка 15%", 15),
-                                new PersonDiscount("Скидка 20%", 20)
+                                new CustomerDiscount("Нет скидки", 0),
+                                new CustomerDiscount("Скидка 3%", 3),
+                                new CustomerDiscount("Скидка 5%", 5),
+                                new CustomerDiscount("Скидка 7%", 7),
+                                new CustomerDiscount("Скидка 10%", 10),
+                                new CustomerDiscount("Скидка 15%", 15),
+                                new CustomerDiscount("Скидка 20%", 20)
                                 )
                 )
         );
@@ -37,29 +36,29 @@ public class PersonDiscountServiceImpl implements IPersonDiscountService {
     /* end temp */
 
     @Override
-    public PersonDiscount create(PersonDiscount personDiscount) {
+    public CustomerDiscount create(CustomerDiscount personDiscount) {
         return personDiscountRepository.save(personDiscount);
     }
 
     @Override
-    public PersonDiscount get(String id) {
+    public CustomerDiscount get(String id) {
         return personDiscountRepository.findById(id).orElse(null);
     }
 
     @Override
-    public PersonDiscount update(PersonDiscount personDiscount) {
+    public CustomerDiscount update(CustomerDiscount personDiscount) {
         return personDiscountRepository.save(personDiscount);
     }
 
     @Override
-    public PersonDiscount delete(String id) {
-        PersonDiscount personDiscount = this.get(id);
+    public CustomerDiscount delete(String id) {
+        CustomerDiscount personDiscount = this.get(id);
         personDiscountRepository.deleteById(id);
         return personDiscount;
     }
 
     @Override
-    public List<PersonDiscount> getAll() {
+    public List<CustomerDiscount> getAll() {
         return personDiscountRepository.findAll();
     }
 }

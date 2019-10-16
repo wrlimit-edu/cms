@@ -16,19 +16,19 @@ public class Doc {
     private LocalDate date;
     private Boolean status;
     private Boolean type;
-    private Client client;
+    private Customer customer;
     private List<Product> products;
     private float sum;
 
     public Doc() {
     }
 
-    public Doc(int number, LocalDate date, Boolean status, Boolean type, Client client, List<Product> products, float sum) {
+    public Doc(int number, LocalDate date, Boolean status, Boolean type, Customer customer, List<Product> products, float sum) {
         this.number = number;
         this.date = date;
         this.status = status;
         this.type = type;
-        this.client = client;
+        this.customer = customer;
         this.products = products;
         this.sum = sum;
     }
@@ -73,12 +73,12 @@ public class Doc {
         this.type = type;
     }
 
-    public Client getClient() {
-        return client;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setClient(Client client) {
-        this.client = client;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     public List<Product> getProducts() {
@@ -105,7 +105,7 @@ public class Doc {
                 ", date=" + date +
                 ", status=" + status +
                 ", type=" + type +
-                ", client=" + client +
+                ", customer=" + customer +
                 ", products=" + products +
                 ", sum=" + sum +
                 '}';
@@ -116,7 +116,7 @@ public class Doc {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Doc doc = (Doc) o;
-        return id.equals(doc.id);
+        return Objects.equals(id, doc.id);
     }
 
     @Override
