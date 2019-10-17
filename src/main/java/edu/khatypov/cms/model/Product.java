@@ -13,18 +13,18 @@ public class Product {
     private String name;
     private String description;
     private float price;
-    private int discount;
+    private ProductDiscount productDiscount;
     private int amount;
 
     public Product() {
     }
 
-    public Product(int number, String name, String description, float price1, float price2, int discount, int amount) {
+    public Product(int number, String name, String description, float price, ProductDiscount productDiscount, int amount) {
         this.number = number;
         this.name = name;
         this.description = description;
         this.price = price;
-        this.discount = discount;
+        this.productDiscount = productDiscount;
         this.amount = amount;
     }
 
@@ -68,12 +68,12 @@ public class Product {
         this.price = price;
     }
 
-    public int getDiscount() {
-        return discount;
+    public ProductDiscount getProductDiscount() {
+        return productDiscount;
     }
 
-    public void setDiscount(int discount) {
-        this.discount = discount;
+    public void setProductDiscount(ProductDiscount productDiscount) {
+        this.productDiscount = productDiscount;
     }
 
     public int getAmount() {
@@ -92,7 +92,7 @@ public class Product {
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", price=" + price +
-                ", discount=" + discount +
+                ", productDiscount=" + productDiscount +
                 ", amount=" + amount +
                 '}';
     }
@@ -102,7 +102,7 @@ public class Product {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Product product = (Product) o;
-        return id.equals(product.id);
+        return Objects.equals(id, product.id);
     }
 
     @Override

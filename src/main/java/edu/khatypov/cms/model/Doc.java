@@ -1,6 +1,5 @@
 package edu.khatypov.cms.model;
 
-import ch.qos.logback.core.net.server.Client;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 

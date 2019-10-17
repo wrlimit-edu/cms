@@ -1,9 +1,9 @@
 package edu.khatypov.cms.repository;
 
-import edu.khatypov.cms.model.Person;
+import edu.khatypov.cms.model.ProductDiscount;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PersonRepository extends MongoRepository<Person, String> {
+public interface ProductDiscountRepository extends MongoRepository<ProductDiscount, String> {
 }

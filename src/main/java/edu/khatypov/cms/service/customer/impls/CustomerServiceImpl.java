@@ -1,33 +1,42 @@
 package edu.khatypov.cms.service.customer.impls;
 
 import edu.khatypov.cms.model.Customer;
+import edu.khatypov.cms.repository.CustomerRepository;
 import edu.khatypov.cms.service.customer.interfaces.ICustomerService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class CustomerServiceImpl implements ICustomerService {
+    @Autowired
+    CustomerRepository customerRepository;
+
     @Override
     public Customer create(Customer customer) {
-        return null;
+        return customerRepository.save(customer);
     }
 
     @Override
     public Customer get(String id) {
-        return null;
+        return customerRepository.findById(id).orElse(null);
     }
 
     @Override
     public Customer update(Customer customer) {
-        return null;
+        return customerRepository.save(customer);
     }
 
     @Override
     public Customer delete(String id) {
-        return null;
+        Customer customer = this.get(id);
+        customerRepository.deleteById(id);
+        return customer;
     }
 
     @Override
     public List<Customer> getAll() {
-        return null;
+        return customerRepository.findAll();
     }
 }

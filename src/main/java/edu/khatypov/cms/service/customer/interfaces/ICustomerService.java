@@ -1,6 +1,7 @@
 package edu.khatypov.cms.service.customer.interfaces;
 
 import edu.khatypov.cms.model.Customer;
+
 import java.util.List;
 
 public interface ICustomerService {
