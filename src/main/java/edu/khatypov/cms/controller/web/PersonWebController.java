@@ -56,7 +56,7 @@ public class PersonWebController {
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     String postAdd(Model model, @ModelAttribute("personForm") PersonForm personForm) {
-
+        /*
         Person person = new Person(
                 0,
                 personForm.getFirstName(),
@@ -68,6 +68,7 @@ public class PersonWebController {
                 personForm.getDiscount()
         );
         personService.create(person);
+        */
         return "redirect:/person/list";
     }
 

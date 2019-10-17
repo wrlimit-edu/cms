@@ -1,26 +1,22 @@
 package edu.khatypov.cms.controller.web;
 
+import edu.khatypov.cms.service.customerDiscount.impls.CustomerDiscountServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@RequestMapping("/personDiscount")
+@RequestMapping("/customerDiscount")
 @CrossOrigin("*")
 @Controller
-public class PersonDiscountWebController {
-    /*
+public class CustomerDiscountWebController {
     @Autowired
-    PersonDiscountServiceImpl personDiscountService;
+    CustomerDiscountServiceImpl customerDiscountService;
 
     @RequestMapping("/list")
     public String list(Model model) {
-        model.addAttribute("persons", personDiscountService.getAll());
-        return "/personDiscount/list";
+        model.addAttribute("customerDiscounts", customerDiscountService.getAll());
+        return "/customerDiscount/list";
     }
-    */
-
-
-
 }
