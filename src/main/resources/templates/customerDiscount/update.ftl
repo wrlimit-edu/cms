@@ -27,7 +27,7 @@
                     <div class="form-group row">
                         <label class="col-sm-3 col-form-label">Название</label>
                         <div class="col-sm-9">
-                            <@spring.formInput "customerDiscountForm.name" "class='form-control'" "text"/>
+                            <@spring.formInput "customerDiscountForm.name" "class='form-control' required" "text"/>
                         </div>
                     </div>
                     <div class="form-group row">

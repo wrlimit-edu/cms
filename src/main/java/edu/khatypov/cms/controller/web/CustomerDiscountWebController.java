@@ -15,6 +15,8 @@ public class CustomerDiscountWebController {
     @Autowired
     CustomerDiscountServiceImpl customerDiscountService;
 
+    /* CREATE */
+
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public String create(Model model) {
         CustomerDiscountForm customerDiscountForm = new CustomerDiscountForm();
@@ -25,10 +27,7 @@ public class CustomerDiscountWebController {
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String create(Model model, @ModelAttribute("customerDiscountForm") CustomerDiscountForm customerDiscountForm) {
         String url = "/customerDiscount/create";
-        if (customerDiscountForm.getName() == "") {
-            model.addAttribute("customerDiscountForm", customerDiscountForm);
-            model.addAttribute("errorMessage", "Ошибка! Поле <strong>Название</strong> не заполнено!");
-        } else if (customerDiscountService.getByName(customerDiscountForm.getName()) != null) {
+        if (customerDiscountService.getByName(customerDiscountForm.getName()) != null) {
             model.addAttribute("customerDiscountForm", customerDiscountForm);
             model.addAttribute("errorMessage", "Ошибка! Скидка с названием <strong>" + customerDiscountForm.getName() + "</strong> уже существует!");
         } else {
@@ -44,7 +43,9 @@ public class CustomerDiscountWebController {
         return url;
     }
 
-    @RequestMapping(value = "/update/{id}")
+    /* UPDATE */
+
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
     public String update(Model model,  @PathVariable("id") String id) {
         CustomerDiscount customerDiscount = customerDiscountService.get(id);
         CustomerDiscountForm customerDiscountForm = new CustomerDiscountForm();
@@ -58,14 +59,10 @@ public class CustomerDiscountWebController {
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String update(Model model, @ModelAttribute("customerDiscountForm") CustomerDiscountForm customerDiscountForm) {
         String url = "/customerDiscount/update";
-        if (customerDiscountForm.getName() == "") {
-            model.addAttribute("customerDiscountForm", customerDiscountForm);
-            model.addAttribute("errorMessage", "Ошибка! Поле <strong>Название</strong> не заполнено!");
-        } else if (customerDiscountService.getByName(customerDiscountForm.getName()).getId() != customerDiscountForm.getId()) {
+        CustomerDiscount customerDiscountByName = customerDiscountService.getByName(customerDiscountForm.getName());
+        if (customerDiscountByName != null && customerDiscountByName.hashCode() != customerDiscountForm.hashCode()) {
             model.addAttribute("customerDiscountForm", customerDiscountForm);
             model.addAttribute("errorMessage", "Ошибка! Скидка с названием <strong>" + customerDiscountForm.getName() + "</strong> уже существует!");
-            System.out.println(customerDiscountService.getByName(customerDiscountForm.getName()));
-            System.out.println(customerDiscountForm);
         } else {
             CustomerDiscount customerDiscount = new CustomerDiscount(
                     customerDiscountForm.getId(),
@@ -80,9 +77,7 @@ public class CustomerDiscountWebController {
         return url;
     }
 
-
-
-
+    /* LIST */
 
     @RequestMapping("/list")
     public String list(Model model) {
