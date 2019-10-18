@@ -59,6 +59,7 @@
                                 Настройки
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarSettings">
+                                <a class="dropdown-item btn-sm" href="/customerDiscount/list">Скидки для клиентов</a>
                                 <a class="dropdown-item btn-sm" href="/test">Test</a>
                             </div>
                         </li>

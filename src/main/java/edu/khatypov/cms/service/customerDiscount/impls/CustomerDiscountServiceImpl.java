@@ -5,6 +5,7 @@ import edu.khatypov.cms.model.Person;
 import edu.khatypov.cms.repository.CustomerDiscountRepository;
 import edu.khatypov.cms.service.customerDiscount.interfaces.ICustomerDiscountService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -24,11 +25,11 @@ public class CustomerDiscountServiceImpl implements ICustomerDiscountService {
         customerDiscountRepository.saveAll(
                 new ArrayList<>(
                         Arrays.asList(
-                                new CustomerDiscount("Стандарт (нет скидки)", 0),
-                                new CustomerDiscount("Наш клиент (скидка 5%)", 5),
-                                new CustomerDiscount("Vip (скидка 25%)", 25),
-                                new CustomerDiscount("Постоянный клиент (скидка 10%)", 10),
-                                new CustomerDiscount("Премиум (скидка 20%)", 20)
+                                new CustomerDiscount("Стандарт", 0),
+                                new CustomerDiscount("Наш клиент", 5),
+                                new CustomerDiscount("Постоянный клиент", 10),
+                                new CustomerDiscount("Премиум", 15),
+                                new CustomerDiscount("VIP", 20)
                         )
                 )
         );
@@ -59,6 +60,11 @@ public class CustomerDiscountServiceImpl implements ICustomerDiscountService {
 
     @Override
     public List<CustomerDiscount> getAll() {
-        return customerDiscountRepository.findAll();
+        return customerDiscountRepository.findAll(Sort.by(Sort.Direction.ASC, "value"));
+    }
+
+    @Override
+    public CustomerDiscount getByName(String name) {
+        return customerDiscountRepository.findByNameIgnoreCase(name);
     }
 }

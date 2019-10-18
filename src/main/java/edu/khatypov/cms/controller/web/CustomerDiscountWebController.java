@@ -1,11 +1,12 @@
 package edu.khatypov.cms.controller.web;
 
+import edu.khatypov.cms.forms.CustomerDiscountForm;
+import edu.khatypov.cms.model.CustomerDiscount;
 import edu.khatypov.cms.service.customerDiscount.impls.CustomerDiscountServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/customerDiscount")
 @CrossOrigin("*")
@@ -13,6 +14,75 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class CustomerDiscountWebController {
     @Autowired
     CustomerDiscountServiceImpl customerDiscountService;
+
+    @RequestMapping(value = "/create", method = RequestMethod.GET)
+    public String create(Model model) {
+        CustomerDiscountForm customerDiscountForm = new CustomerDiscountForm();
+        model.addAttribute("customerDiscountForm", customerDiscountForm);
+        return "/customerDiscount/create";
+    }
+
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    public String create(Model model, @ModelAttribute("customerDiscountForm") CustomerDiscountForm customerDiscountForm) {
+        String url = "/customerDiscount/create";
+        if (customerDiscountForm.getName() == "") {
+            model.addAttribute("customerDiscountForm", customerDiscountForm);
+            model.addAttribute("errorMessage", "Ошибка! Поле <strong>Название</strong> не заполнено!");
+        } else if (customerDiscountService.getByName(customerDiscountForm.getName()) != null) {
+            model.addAttribute("customerDiscountForm", customerDiscountForm);
+            model.addAttribute("errorMessage", "Ошибка! Скидка с названием <strong>" + customerDiscountForm.getName() + "</strong> уже существует!");
+        } else {
+            CustomerDiscount customerDiscount = new CustomerDiscount(
+                    customerDiscountForm.getName(),
+                    customerDiscountForm.getValue()
+            );
+            customerDiscountService.create(customerDiscount);
+            model.addAttribute("customerDiscounts", customerDiscountService.getAll());
+            model.addAttribute("successMessage", "Скидка <strong>" + customerDiscountForm.getName() + "</strong> добавлена!");
+            url = "/customerDiscount/list";
+        }
+        return url;
+    }
+
+    @RequestMapping(value = "/update/{id}")
+    public String update(Model model,  @PathVariable("id") String id) {
+        CustomerDiscount customerDiscount = customerDiscountService.get(id);
+        CustomerDiscountForm customerDiscountForm = new CustomerDiscountForm();
+        customerDiscountForm.setId(id);
+        customerDiscountForm.setName(customerDiscount.getName());
+        customerDiscountForm.setValue(customerDiscount.getValue());
+        model.addAttribute("customerDiscountForm", customerDiscountForm);
+        return "/customerDiscount/update";
+    }
+
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public String update(Model model, @ModelAttribute("customerDiscountForm") CustomerDiscountForm customerDiscountForm) {
+        String url = "/customerDiscount/update";
+        if (customerDiscountForm.getName() == "") {
+            model.addAttribute("customerDiscountForm", customerDiscountForm);
+            model.addAttribute("errorMessage", "Ошибка! Поле <strong>Название</strong> не заполнено!");
+        } else if (customerDiscountService.getByName(customerDiscountForm.getName()).getId() != customerDiscountForm.getId()) {
+            model.addAttribute("customerDiscountForm", customerDiscountForm);
+            model.addAttribute("errorMessage", "Ошибка! Скидка с названием <strong>" + customerDiscountForm.getName() + "</strong> уже существует!");
+            System.out.println(customerDiscountService.getByName(customerDiscountForm.getName()));
+            System.out.println(customerDiscountForm);
+        } else {
+            CustomerDiscount customerDiscount = new CustomerDiscount(
+                    customerDiscountForm.getId(),
+                    customerDiscountForm.getName(),
+                    customerDiscountForm.getValue()
+            );
+            customerDiscountService.update(customerDiscount);
+            model.addAttribute("customerDiscounts", customerDiscountService.getAll());
+            model.addAttribute("successMessage", "Скидка <strong>" + customerDiscountForm.getName() + "</strong> изменена!");
+            url = "/customerDiscount/list";
+        }
+        return url;
+    }
+
+
+
+
 
     @RequestMapping("/list")
     public String list(Model model) {

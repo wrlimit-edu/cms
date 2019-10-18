@@ -1,4 +1,4 @@
-package edu.khatypov.cms.model;
+package edu.khatypov.cms.forms;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -6,25 +6,11 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.Objects;
 
 @Document
-public class CustomerDiscount {
+public class CustomerDiscountForm {
     @Id
     private String id;
     private String name;
     private int value;
-
-    public CustomerDiscount() {
-    }
-
-    public CustomerDiscount(String name, int value) {
-        this.name = name;
-        this.value = value;
-    }
-
-    public CustomerDiscount(String id, String name, int value) {
-        this.id = id;
-        this.name = name;
-        this.value = value;
-    }
 
     public String getId() {
         return id;
@@ -63,7 +49,7 @@ public class CustomerDiscount {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        CustomerDiscount that = (CustomerDiscount) o;
+        CustomerDiscountForm that = (CustomerDiscountForm) o;
         return Objects.equals(id, that.id);
     }
 

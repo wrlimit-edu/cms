@@ -10,4 +10,6 @@ public interface ICustomerDiscountService {
     CustomerDiscount update(CustomerDiscount customerDiscount);
     CustomerDiscount delete(String id);
     List<CustomerDiscount> getAll();
+
+    CustomerDiscount getByName(String name);
 }
