@@ -25,11 +25,11 @@ public class CustomerDiscountServiceImpl implements ICustomerDiscountService {
         customerDiscountRepository.saveAll(
                 new ArrayList<>(
                         Arrays.asList(
-                                new CustomerDiscount("Стандарт", 0),
-                                new CustomerDiscount("Наш клиент", 5),
-                                new CustomerDiscount("Постоянный клиент", 10),
-                                new CustomerDiscount("Премиум", 15),
-                                new CustomerDiscount("VIP", 20)
+                                new CustomerDiscount("Стандарт", 0, true),
+                                new CustomerDiscount("Наш клиент", 5, true),
+                                new CustomerDiscount("Постоянный клиент", 10, true),
+                                new CustomerDiscount("Премиум", 15, false),
+                                new CustomerDiscount("VIP", 20, true)
                         )
                 )
         );

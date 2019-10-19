@@ -11,19 +11,22 @@ public class CustomerDiscount {
     private String id;
     private String name;
     private int value;
+    private boolean enabled;
 
     public CustomerDiscount() {
     }
 
-    public CustomerDiscount(String name, int value) {
+    public CustomerDiscount(String name, int value, boolean enabled) {
         this.name = name;
         this.value = value;
+        this.enabled = enabled;
     }
 
-    public CustomerDiscount(String id, String name, int value) {
+    public CustomerDiscount(String id, String name, int value, boolean enabled) {
         this.id = id;
         this.name = name;
         this.value = value;
+        this.enabled = enabled;
     }
 
     public String getId() {
@@ -50,12 +53,21 @@ public class CustomerDiscount {
         this.value = value;
     }
 
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
     @Override
     public String toString() {
         return "CustomerDiscount{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", value=" + value +
+                ", enabled=" + enabled +
                 '}';
     }
 

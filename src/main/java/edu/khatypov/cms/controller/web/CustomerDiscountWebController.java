@@ -33,7 +33,8 @@ public class CustomerDiscountWebController {
         } else {
             CustomerDiscount customerDiscount = new CustomerDiscount(
                     customerDiscountForm.getName(),
-                    customerDiscountForm.getValue()
+                    customerDiscountForm.getValue(),
+                    customerDiscountForm.isEnabled()
             );
             customerDiscountService.create(customerDiscount);
             model.addAttribute("customerDiscounts", customerDiscountService.getAll());
@@ -52,6 +53,7 @@ public class CustomerDiscountWebController {
         customerDiscountForm.setId(id);
         customerDiscountForm.setName(customerDiscount.getName());
         customerDiscountForm.setValue(customerDiscount.getValue());
+        customerDiscountForm.setEnabled(customerDiscount.isEnabled());
         model.addAttribute("customerDiscountForm", customerDiscountForm);
         return "/customerDiscount/update";
     }
@@ -67,7 +69,8 @@ public class CustomerDiscountWebController {
             CustomerDiscount customerDiscount = new CustomerDiscount(
                     customerDiscountForm.getId(),
                     customerDiscountForm.getName(),
-                    customerDiscountForm.getValue()
+                    customerDiscountForm.getValue(),
+                    customerDiscountForm.isEnabled()
             );
             customerDiscountService.update(customerDiscount);
             model.addAttribute("customerDiscounts", customerDiscountService.getAll());

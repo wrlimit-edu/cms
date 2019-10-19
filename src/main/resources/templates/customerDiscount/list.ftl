@@ -28,14 +28,22 @@
                 <tr>
                     <th>Название</th>
                     <th>Скидка</th>
+                    <th>Статус</th>
                     <th class="my-table-edit"></th>
                 </tr>
                 </thead>
                 <tbody>
+
                 <#list customerDiscounts as customerDiscount>
+                    <#if customerDiscount.enabled == true>
+                        <#assign enabled = "<span class='text-success'>Включен</span>">
+                    <#else>
+                        <#assign enabled = "<span class='text-danger'>Отключен</span>">
+                    </#if>
                     <tr>
                         <td>${customerDiscount.name}</td>
                         <td>Cкидка ${customerDiscount.value}%</td>
+                        <td>${enabled}</td>
                         <td class="my-table-edit" style="background-image: url(/images/icons48/edit.png);" onClick="location.href='/customerDiscount/update/${customerDiscount.id}'"></td>
                     </tr>
                 </#list>

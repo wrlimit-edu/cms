@@ -11,6 +11,7 @@ public class CustomerDiscountForm {
     private String id;
     private String name;
     private int value;
+    private boolean enabled;
 
     public String getId() {
         return id;
@@ -36,12 +37,21 @@ public class CustomerDiscountForm {
         this.value = value;
     }
 
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
     @Override
     public String toString() {
-        return "CustomerDiscount{" +
+        return "CustomerDiscountForm{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", value=" + value +
+                ", enabled=" + enabled +
                 '}';
     }
 
