@@ -7,7 +7,7 @@
             <ul class="list-group shadow-sm rounded" style="width: 600px;">
                 <li class="list-group-item p-0">
                     <div class="d-flex flex-row">
-                        <div class="my-form-group-header-icon" style="background-image: url(/images/icons48/add.png);"></div>
+                        <div class="my-form-group-header-icon" style="background-image: url(/images/icons48/edit.png);"></div>
                         <div class="my-form-group-header-title">Редактировать скидку клиента</div>
                     </div>
                 </li>
@@ -34,6 +34,12 @@
                         <label class="col-sm-3 col-form-label">Процент скидки</label>
                         <div class="col-sm-9">
                             <@spring.formInput "customerDiscountForm.value" "class='form-control' min='0' max='20' step='1'" "number"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Статус</label>
+                        <div class="col-sm-9">
+                            <@spring.formSingleSelect "customerDiscountForm.enabled", enabledMap, "class='form-control'"/>
                         </div>
                     </div>
                 </li>

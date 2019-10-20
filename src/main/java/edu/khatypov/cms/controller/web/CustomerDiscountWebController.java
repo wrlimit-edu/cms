@@ -8,6 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 @RequestMapping("/customerDiscount")
 @CrossOrigin("*")
 @Controller
@@ -34,7 +37,7 @@ public class CustomerDiscountWebController {
             CustomerDiscount customerDiscount = new CustomerDiscount(
                     customerDiscountForm.getName(),
                     customerDiscountForm.getValue(),
-                    customerDiscountForm.isEnabled()
+                    true
             );
             customerDiscountService.create(customerDiscount);
             model.addAttribute("customerDiscounts", customerDiscountService.getAll());
@@ -49,11 +52,14 @@ public class CustomerDiscountWebController {
     @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
     public String update(Model model,  @PathVariable("id") String id) {
         CustomerDiscount customerDiscount = customerDiscountService.get(id);
+        Map<String, String> enabledMap = new LinkedHashMap<>();
+        enabledMap.put("true", "Включен");
+        enabledMap.put("false", "Отключен");
+        model.addAttribute("enabledMap", enabledMap);
         CustomerDiscountForm customerDiscountForm = new CustomerDiscountForm();
         customerDiscountForm.setId(id);
         customerDiscountForm.setName(customerDiscount.getName());
         customerDiscountForm.setValue(customerDiscount.getValue());
-        customerDiscountForm.setEnabled(customerDiscount.isEnabled());
         model.addAttribute("customerDiscountForm", customerDiscountForm);
         return "/customerDiscount/update";
     }
@@ -63,6 +69,10 @@ public class CustomerDiscountWebController {
         String url = "/customerDiscount/update";
         CustomerDiscount customerDiscountByName = customerDiscountService.getByName(customerDiscountForm.getName());
         if (customerDiscountByName != null && customerDiscountByName.hashCode() != customerDiscountForm.hashCode()) {
+            Map<String, String> enabledMap = new LinkedHashMap<>();
+            enabledMap.put("true", "Включен");
+            enabledMap.put("false", "Отключен");
+            model.addAttribute("enabledMap", enabledMap);
             model.addAttribute("customerDiscountForm", customerDiscountForm);
             model.addAttribute("errorMessage", "Ошибка! Скидка с названием <strong>" + customerDiscountForm.getName() + "</strong> уже существует!");
         } else {
