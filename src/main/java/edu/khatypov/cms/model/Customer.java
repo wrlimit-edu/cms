@@ -14,16 +14,28 @@ public class Customer {
     private String phone;
     private String address;
     private CustomerDiscount customerDiscount;
+    private boolean enabled;
 
     public Customer() {
     }
 
-    public Customer(Person person, int number, String phone, String address, CustomerDiscount customerDiscount) {
+    public Customer(Person person, int number, String phone, String address, CustomerDiscount customerDiscount, boolean enabled) {
         this.person = person;
         this.number = number;
         this.phone = phone;
         this.address = address;
         this.customerDiscount = customerDiscount;
+        this.enabled = enabled;
+    }
+
+    public Customer(String id, Person person, int number, String phone, String address, CustomerDiscount customerDiscount, boolean enabled) {
+        this.id = id;
+        this.person = person;
+        this.number = number;
+        this.phone = phone;
+        this.address = address;
+        this.customerDiscount = customerDiscount;
+        this.enabled = enabled;
     }
 
     public String getId() {
@@ -74,6 +86,14 @@ public class Customer {
         this.customerDiscount = customerDiscount;
     }
 
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
     @Override
     public String toString() {
         return "Customer{" +
@@ -83,6 +103,7 @@ public class Customer {
                 ", phone='" + phone + '\'' +
                 ", address='" + address + '\'' +
                 ", customerDiscount=" + customerDiscount +
+                ", enabled=" + enabled +
                 '}';
     }
 

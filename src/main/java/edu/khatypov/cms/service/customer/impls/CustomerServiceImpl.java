@@ -40,21 +40,24 @@ public class CustomerServiceImpl implements ICustomerService {
                                         1,
                                         "0951234567",
                                         "Львов, Тихая 16/24",
-                                        customerDiscountService.getAll().get(0)
+                                        customerDiscountService.getAll().get(0),
+                                        true
                                 ),
                                 new Customer(
                                         personService.getAll().get(1),
                                         2,
                                         "0506541235",
                                         "Черновцы, Главная 245/16",
-                                        customerDiscountService.getAll().get(2)
+                                        customerDiscountService.getAll().get(2),
+                                        true
                                 ),
                                 new Customer(
                                         personService.getAll().get(2),
                                         33,
                                         "0974582135",
                                         "Винница, Садовая 85/31",
-                                        customerDiscountService.getAll().get(1)
+                                        customerDiscountService.getAll().get(1),
+                                        true
                                 )
                         )
                 )
