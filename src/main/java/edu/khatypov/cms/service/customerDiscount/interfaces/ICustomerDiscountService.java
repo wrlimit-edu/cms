@@ -12,4 +12,5 @@ public interface ICustomerDiscountService {
     List<CustomerDiscount> getAll();
 
     CustomerDiscount getByName(String name);
+    List<CustomerDiscount> getAllByEnabled(boolean enable);
 }

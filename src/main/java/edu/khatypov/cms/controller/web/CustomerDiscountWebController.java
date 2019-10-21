@@ -60,6 +60,7 @@ public class CustomerDiscountWebController {
         customerDiscountForm.setId(id);
         customerDiscountForm.setName(customerDiscount.getName());
         customerDiscountForm.setValue(customerDiscount.getValue());
+        customerDiscountForm.setEnabled(customerDiscount.isEnabled());
         model.addAttribute("customerDiscountForm", customerDiscountForm);
         return "/customerDiscount/update";
     }
@@ -67,14 +68,25 @@ public class CustomerDiscountWebController {
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String update(Model model, @ModelAttribute("customerDiscountForm") CustomerDiscountForm customerDiscountForm) {
         String url = "/customerDiscount/update";
+        String errorMessage = null;
         CustomerDiscount customerDiscountByName = customerDiscountService.getByName(customerDiscountForm.getName());
         if (customerDiscountByName != null && customerDiscountByName.hashCode() != customerDiscountForm.hashCode()) {
-            Map<String, String> enabledMap = new LinkedHashMap<>();
-            enabledMap.put("true", "Включен");
-            enabledMap.put("false", "Отключен");
+            errorMessage = "Ошибка! Скидка с названием <strong>" + customerDiscountForm.getName() + "</strong> уже существует!";
+        } else if (
+                customerDiscountForm.isEnabled() == false
+                && customerDiscountService.getAllByEnabled(true).size() == 1
+                && customerDiscountService.getAllByEnabled(true).get(0).hashCode() == customerDiscountForm.hashCode()
+        ) {
+            errorMessage = "Ошибка! Минимум один вариант скидки должен быть включен!";
+        }
+        if (errorMessage != null) {
+            Map<String, String> enabledMap = new LinkedHashMap<String, String>() {{
+                put("true", "Включен");
+                put("false", "Отключен");
+            }};
             model.addAttribute("enabledMap", enabledMap);
             model.addAttribute("customerDiscountForm", customerDiscountForm);
-            model.addAttribute("errorMessage", "Ошибка! Скидка с названием <strong>" + customerDiscountForm.getName() + "</strong> уже существует!");
+            model.addAttribute("errorMessage", errorMessage);
         } else {
             CustomerDiscount customerDiscount = new CustomerDiscount(
                     customerDiscountForm.getId(),

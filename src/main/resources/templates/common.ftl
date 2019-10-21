@@ -25,7 +25,7 @@
                                 Клиенты
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarPersons">
-                                <a class="dropdown-item btn-sm" href="/person/list">Все клиенты</a>
+                                <a class="dropdown-item btn-sm" href="/customer/list">Все клиенты</a>
                                 <a class="dropdown-item btn-sm" href="#">Поиск клиента</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item btn-sm" href="#">Добавить клиента</a>

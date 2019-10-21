@@ -1,7 +1,6 @@
 package edu.khatypov.cms.service.customerDiscount.impls;
 
 import edu.khatypov.cms.model.CustomerDiscount;
-import edu.khatypov.cms.model.Person;
 import edu.khatypov.cms.repository.CustomerDiscountRepository;
 import edu.khatypov.cms.service.customerDiscount.interfaces.ICustomerDiscountService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,5 +65,10 @@ public class CustomerDiscountServiceImpl implements ICustomerDiscountService {
     @Override
     public CustomerDiscount getByName(String name) {
         return customerDiscountRepository.findByNameIgnoreCase(name);
+    }
+
+    @Override
+    public List<CustomerDiscount> getAllByEnabled(boolean enable) {
+        return customerDiscountRepository.findAllByEnabled(enable);
     }
 }

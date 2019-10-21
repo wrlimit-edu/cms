@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface CustomerDiscountRepository extends MongoRepository<CustomerDiscount, String> {
     CustomerDiscount findByNameIgnoreCase(String name);
+    List<CustomerDiscount> findAllByEnabled(boolean enable);
 }

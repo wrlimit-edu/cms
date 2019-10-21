@@ -7,12 +7,31 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
 public class PersonServiceImpl implements IPersonService {
     @Autowired
     PersonRepository personRepository;
+
+    /* temp */
+    @PostConstruct
+    void init() {
+        personRepository.deleteAll();
+        personRepository.saveAll(
+                new ArrayList<>(
+                        Arrays.asList(
+                                new Person("Владимир", "Александрович", "Фролов", true),
+                                new Person("Наталья", "Владимировна", "Смирнова", false),
+                                new Person("Игорь", "Анатольевич", "Попов", true)
+                        )
+                )
+        );
+    }
+    /* end temp */
 
     @Override
     public Person create(Person person) {
@@ -38,6 +57,6 @@ public class PersonServiceImpl implements IPersonService {
 
     @Override
     public List<Person> getAll() {
-        return personRepository.findAll(Sort.by(Sort.Direction.ASC, "lastName"));
+        return personRepository.findAll();
     }
 }
