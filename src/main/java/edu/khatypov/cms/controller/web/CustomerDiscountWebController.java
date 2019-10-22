@@ -43,8 +43,6 @@ public class CustomerDiscountWebController {
             model.addAttribute("customerDiscounts", customerDiscountService.getAll());
             model.addAttribute("successMessage", "Скидка <strong>" + customerDiscountForm.getName() + "</strong> добавлена!");
             url = "/customerDiscount/list";
-
-            System.out.println("flag");
         }
         return url;
     }

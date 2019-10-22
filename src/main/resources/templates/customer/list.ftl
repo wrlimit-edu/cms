@@ -17,7 +17,7 @@
                 <div class="my-list-group-header-title">Клиенты</div>
                 <div class="ml-auto my-list-group-header-btns">
                     <div class="btn-group btn-group-sm">
-                        <a class="btn btn-outline-secondary" href="/customerDiscount/create">Добавить</a>
+                        <a class="btn btn-outline-secondary" href="/customer/create">Добавить</a>
                     </div>
                 </div>
             </div>
@@ -26,7 +26,7 @@
             <table class="table table-bordered table-sm table-hover">
                 <thead class="bg-light">
                 <tr>
-                    <th class="my-table-code"></th>
+                    <th class="my-table-code">№</th>
                     <th>Фамилия</th>
                     <th>Имя</th>
                     <th>Отчество</th>
@@ -34,6 +34,7 @@
                     <th>Телефон</th>
                     <th>Адрес</th>
                     <th>Скидка</th>
+                    <th>Статус</th>
                     <th class="my-table-edit"></th>
                 </tr>
                 </thead>
@@ -46,6 +47,12 @@
                         <#assign gender = "Женский">
                     </#if>
 
+                    <#if customer.enabled == true>
+                        <#assign enabled = "<span class='text-success'>Включен</span>">
+                    <#else>
+                        <#assign enabled = "<span class='text-danger'>Отключен</span>">
+                    </#if>
+
                     <#assign number = customer.number>
                     <tr>
                         <td class="my-table-code">${number?string["00000"]}</td>
@@ -56,6 +63,7 @@
                         <td>${customer.phone}</td>
                         <td>${customer.address}</td>
                         <td>${customer.customerDiscount.name} (${customer.customerDiscount.value}%)</td>
+                        <td>${enabled}</td>
                         <td class="my-table-edit" style="background-image: url(/images/icons48/edit.png);" onClick="location.href='/customer/update/${customer.id}'"></td>
                     </tr>
                 </#list>

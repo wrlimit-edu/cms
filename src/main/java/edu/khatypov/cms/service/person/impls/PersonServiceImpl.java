@@ -26,7 +26,9 @@ public class PersonServiceImpl implements IPersonService {
                         Arrays.asList(
                                 new Person("Владимир", "Александрович", "Фролов", true),
                                 new Person("Наталья", "Владимировна", "Смирнова", false),
-                                new Person("Игорь", "Анатольевич", "Попов", true)
+                                new Person("Игорь", "Анатольевич", "Попов", true),
+                                new Person("Артур", "Дмитреевич", "Кузнецов", true),
+                                new Person("Светлана", "Николаевна", "Тихонова", false)
                         )
                 )
         );
