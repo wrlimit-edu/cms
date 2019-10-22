@@ -10,4 +10,6 @@ public interface ICustomerService {
     Customer update(Customer customer);
     Customer delete(String id);
     List<Customer> getAll();
+
+    Customer getByMaxNumber();
 }

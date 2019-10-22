@@ -10,5 +10,5 @@ import java.util.List;
 @Repository
 public interface CustomerRepository extends MongoRepository<Customer, String> {
     List<Customer> findAllByCustomerDiscount_Id(String id);
-    //Customer findTopByOrderByNumberDesc();
+    Customer findTopByOrderByNumberDesc();
 }

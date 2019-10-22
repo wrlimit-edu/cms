@@ -57,7 +57,6 @@ public class CustomerWebController {
     public String create(Model model, @ModelAttribute("customerForm") CustomerForm customerForm) {
         String url = "/customer/create";
         String errorMessage = null;
-
         if (errorMessage != null) {
 
         } else {
@@ -68,17 +67,16 @@ public class CustomerWebController {
                     customerForm.getPerson().getGender()
             );
             person = personService.create(person);
+            int number = customerService.getByMaxNumber().getNumber() + 1;
             CustomerDiscount customerDiscount = customerDiscountService.get(customerForm.getCustomerDiscount().getId());
-
             Customer customer = new Customer(
                     person,
-                    0,
+                    number,
                     customerForm.getPhone(),
                     customerForm.getAddress(),
                     customerDiscount,
                     true
             );
-            personService.create(person);
             customerService.create(customer);
             model.addAttribute("customers", customerService.getAll());
             model.addAttribute("successMessage", "Клиент <strong>"
@@ -90,7 +88,7 @@ public class CustomerWebController {
         return url;
     }
 
-
+    /* UPDATE */
 
     /* LIST */
 

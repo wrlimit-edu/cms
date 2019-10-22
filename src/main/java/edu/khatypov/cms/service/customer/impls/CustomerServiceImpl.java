@@ -107,4 +107,9 @@ public class CustomerServiceImpl implements ICustomerService {
     public List<Customer> getAll() {
         return customerRepository.findAll(Sort.by(Sort.Direction.ASC, "person.lastName"));
     }
+
+    @Override
+    public Customer getByMaxNumber() {
+        return customerRepository.findTopByOrderByNumberDesc();
+    }
 }
