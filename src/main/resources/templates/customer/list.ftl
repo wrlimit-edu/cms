@@ -14,7 +14,7 @@
         <li class="list-group-item p-0">
             <div class="d-flex flex-row">
                 <div class="my-list-group-header-icon" style="background-image: url(/images/icons48/contacts.png);"></div>
-                <div class="my-list-group-header-title">Клиенты</div>
+                <div class="my-list-group-header-title">Клиенты +++</div>
                 <div class="ml-auto my-list-group-header-btns">
                     <div class="btn-group btn-group-sm">
                         <a class="btn btn-outline-secondary" href="/customer/create">Добавить</a>
