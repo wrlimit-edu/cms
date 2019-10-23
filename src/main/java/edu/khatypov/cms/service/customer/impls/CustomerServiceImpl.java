@@ -112,4 +112,9 @@ public class CustomerServiceImpl implements ICustomerService {
     public Customer getByMaxNumber() {
         return customerRepository.findTopByOrderByNumberDesc();
     }
+
+    @Override
+    public Customer getByPhone(String phone) {
+        return customerRepository.findByPhone(phone);
+    }
 }

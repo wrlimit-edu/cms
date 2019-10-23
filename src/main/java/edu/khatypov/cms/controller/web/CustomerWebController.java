@@ -57,8 +57,24 @@ public class CustomerWebController {
     public String create(Model model, @ModelAttribute("customerForm") CustomerForm customerForm) {
         String url = "/customer/create";
         String errorMessage = null;
+        if (customerService.getByPhone(customerForm.getPhone()) != null) {
+            errorMessage = "Ошибка! Номер телефона <strong>" + customerForm.getPhone() + "</strong> уже есть в базе данных!";
+        }
         if (errorMessage != null) {
-
+            Map<String, String> genderMap = new LinkedHashMap<String, String>() {{
+                put("true", "Мужской");
+                put("false", "Женский");
+            }};
+            model.addAttribute("genderMap", genderMap);
+            List<CustomerDiscount> list = customerDiscountService.getAllByEnabled(true);
+            Map<String, String> customerDiscountMap = new LinkedHashMap<String, String>();
+            for (int i = 0; i < list.size(); i++) {
+                customerDiscountMap.put(list.get(i).getId(), list.get(i).getLongName());
+            }
+            model.addAttribute("customerDiscountMap", customerDiscountMap);
+            model.addAttribute("customerForm", customerForm);
+            model.addAttribute("errorMessage", errorMessage);
+            return "/customer/create";
         } else {
             Person person = new Person(
                     customerForm.getPerson().getFirstName(),

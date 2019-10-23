@@ -12,4 +12,5 @@ public interface ICustomerService {
     List<Customer> getAll();
 
     Customer getByMaxNumber();
+    Customer getByPhone(String phone);
 }
