@@ -1,9 +1,6 @@
 package edu.khatypov.cms.service.customer.impls;
 
 import edu.khatypov.cms.model.Customer;
-import edu.khatypov.cms.model.CustomerDiscount;
-import edu.khatypov.cms.model.Person;
-import edu.khatypov.cms.repository.CustomerDiscountRepository;
 import edu.khatypov.cms.repository.CustomerRepository;
 import edu.khatypov.cms.service.customer.interfaces.ICustomerService;
 import edu.khatypov.cms.service.customerDiscount.impls.CustomerDiscountServiceImpl;

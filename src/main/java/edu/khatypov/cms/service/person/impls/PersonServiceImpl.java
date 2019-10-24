@@ -4,7 +4,6 @@ import edu.khatypov.cms.model.Person;
 import edu.khatypov.cms.repository.PersonRepository;
 import edu.khatypov.cms.service.person.interfaces.IPersonService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;

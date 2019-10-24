@@ -10,15 +10,11 @@ import edu.khatypov.cms.service.person.impls.PersonServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 @RequestMapping("/customer")
 @CrossOrigin("*")
@@ -105,6 +101,39 @@ public class CustomerWebController {
     }
 
     /* UPDATE */
+
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
+    public String update(Model model,  @PathVariable("id") String id) {
+        Customer customer = customerService.get(id);
+
+        Map<String, String> genderMap = new LinkedHashMap<String, String>() {{
+            put("true", "Мужской");
+            put("false", "Женский");
+        }};
+        model.addAttribute("genderMap", genderMap);
+
+        List<CustomerDiscount> list = customerDiscountService.getAllByEnabled(true);
+        Map<String, String> customerDiscountMap = new LinkedHashMap<String, String>();
+        for (int i = 0; i < list.size(); i++) {
+            customerDiscountMap.put(list.get(i).getId(), list.get(i).getLongName());
+        }
+        if (list.contains(customer.getCustomerDiscount()) == false) {
+            customerDiscountMap.put(customer.getCustomerDiscount().getId(), customer.getCustomerDiscount().getLongName());
+        }
+        model.addAttribute("customerDiscountMap", customerDiscountMap);
+
+        CustomerForm customerForm = new CustomerForm();
+        customerForm.setId(id);
+        customerForm.setPerson(customer.getPerson());
+        customerForm.setNumber(customer.getNumber());
+        customerForm.setPhone(customer.getPhone());
+        customerForm.setAddress(customer.getAddress());
+        customerForm.setCustomerDiscount(customer.getCustomerDiscount());
+        customerForm.setEnabled(customer.isEnabled());
+        model.addAttribute("customerForm", customerForm);
+
+        return "/customer/update";
+    }
 
     /* LIST */
 

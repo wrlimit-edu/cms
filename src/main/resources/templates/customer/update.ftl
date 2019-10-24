@@ -1,14 +1,14 @@
 <#import "/spring.ftl" as spring/>
 <#import "../common.ftl" as c/>
-<@c.page title="CMS / Добавить клиента">
+<@c.page title="CMS / Редактировать клиента">
 
     <div class="row h-100 justify-content-center align-items-center">
         <form name="person" action=""  method="post">
             <ul class="list-group shadow-sm rounded" style="width: 600px;">
                 <li class="list-group-item p-0">
                     <div class="d-flex flex-row">
-                        <div class="my-form-group-header-icon" style="background-image: url(/images/icons48/add.png);"></div>
-                        <div class="my-form-group-header-title">Добавить клиента</div>
+                        <div class="my-form-group-header-icon" style="background-image: url(/images/icons48/edit.png);"></div>
+                        <div class="my-form-group-header-title">Редактировать клиента</div>
                     </div>
                 </li>
                 <li class="list-group-item my-form-group-body">
