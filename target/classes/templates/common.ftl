@@ -26,9 +26,10 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarPersons">
                                 <a class="dropdown-item btn-sm" href="/customer/list">Все клиенты</a>
-                                <a class="dropdown-item btn-sm" href="#">Поиск клиента</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item btn-sm" href="#">Добавить клиента</a>
+                                <a class="dropdown-item btn-sm" href="/customer/search">Поиск</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item btn-sm" href="/customer/create">Добавить</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
@@ -37,20 +38,20 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDocs">
                                 <a class="dropdown-item btn-sm" href="/doc/list">Все документы</a>
-                                <a class="dropdown-item btn-sm" href="#">---</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item btn-sm" href="#">---</a>
+                                <a class="dropdown-item btn-sm" href="/doc/create">Добавить</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link btn-sm" id="navbarProducts" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Продукты
+                                Товары
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarProducts">
-                                <a class="dropdown-item btn-sm" href="/product/list">Все продукты</a>
-                                <a class="dropdown-item btn-sm" href="#">---</a>
+                                <a class="dropdown-item btn-sm" href="/product/list">Все товары</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item btn-sm" href="#">---</a>
+                                <a class="dropdown-item btn-sm" href="/product/search">Поиск</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item btn-sm" href="/product/create">Добавить</a>
                             </div>
                         </li>
 
@@ -60,7 +61,8 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarSettings">
                                 <a class="dropdown-item btn-sm" href="/customerDiscount/list">Скидки для клиентов</a>
-                                <a class="dropdown-item btn-sm" href="/test">Test</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item btn-sm" href="/productDiscount/list">Скидки для товаров</a>
                             </div>
                         </li>
                     </ul>
