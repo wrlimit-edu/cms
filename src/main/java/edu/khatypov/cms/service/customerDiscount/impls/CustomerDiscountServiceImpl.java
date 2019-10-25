@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -26,8 +27,8 @@ public class CustomerDiscountServiceImpl implements ICustomerDiscountService {
                         Arrays.asList(
                                 new CustomerDiscount("Стандарт", 0, true),
                                 new CustomerDiscount("Наш клиент", 5, true),
-                                new CustomerDiscount("Постоянный клиент", 10, true),
                                 new CustomerDiscount("Премиум", 15, false),
+                                new CustomerDiscount("Постоянный клиент", 10, true),
                                 new CustomerDiscount("VIP", 20, true)
                         )
                 )
@@ -69,6 +70,6 @@ public class CustomerDiscountServiceImpl implements ICustomerDiscountService {
 
     @Override
     public List<CustomerDiscount> getAllByEnabled(boolean enable) {
-        return customerDiscountRepository.findAllByEnabled(enable);
+        return customerDiscountRepository.findAllByEnabledOrderByValue(enable);
     }
 }

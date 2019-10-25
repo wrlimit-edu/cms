@@ -26,7 +26,6 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarPersons">
                                 <a class="dropdown-item btn-sm" href="/customer/list">Все клиенты</a>
-                                <div class="dropdown-divider"></div>
                                 <a class="dropdown-item btn-sm" href="/customer/search">Поиск</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item btn-sm" href="/customer/create">Добавить</a>
@@ -38,6 +37,7 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDocs">
                                 <a class="dropdown-item btn-sm" href="/doc/list">Все документы</a>
+                                <a class="dropdown-item btn-sm" href="/doc/search">Поиск</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item btn-sm" href="/doc/create">Добавить</a>
                             </div>
@@ -48,7 +48,6 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarProducts">
                                 <a class="dropdown-item btn-sm" href="/product/list">Все товары</a>
-                                <div class="dropdown-divider"></div>
                                 <a class="dropdown-item btn-sm" href="/product/search">Поиск</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item btn-sm" href="/product/create">Добавить</a>
@@ -61,7 +60,6 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarSettings">
                                 <a class="dropdown-item btn-sm" href="/customerDiscount/list">Скидки для клиентов</a>
-                                <div class="dropdown-divider"></div>
                                 <a class="dropdown-item btn-sm" href="/productDiscount/list">Скидки для товаров</a>
                             </div>
                         </li>

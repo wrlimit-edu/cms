@@ -3,7 +3,7 @@
 <@c.page title="CMS / Редактировать клиента">
 
     <div class="row h-100 justify-content-center align-items-center">
-        <form name="person" action=""  method="post">
+        <form name="person" action="/customer/update"  method="post">
             <ul class="list-group shadow-sm rounded" style="width: 600px;">
                 <li class="list-group-item p-0">
                     <div class="d-flex flex-row">
@@ -21,6 +21,10 @@
                             </button>
                         </div>
                     </#if>
+
+                    <@spring.formHiddenInput "customerForm.id"/>
+                    <@spring.formHiddenInput "customerForm.person.id"/>
+                    <@spring.formHiddenInput "customerForm.number"/>
 
                     <div class="form-group row">
                         <label class="col-sm-3 col-form-label">Фамилия</label>
@@ -62,6 +66,12 @@
                         <label class="col-sm-3 col-form-label">Скидка</label>
                         <div class="col-sm-9">
                             <@spring.formSingleSelect "customerForm.customerDiscount", customerDiscountMap, "class='form-control'"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Статус</label>
+                        <div class="col-sm-9">
+                            <@spring.formSingleSelect "customerForm.enabled", enabledMap, "class='form-control'"/>
                         </div>
                     </div>
 

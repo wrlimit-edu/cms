@@ -1,6 +1,6 @@
 package edu.khatypov.cms.controller.web;
 
-import edu.khatypov.cms.service.doc.impls.DocServiceImpl;
+import edu.khatypov.cms.service.productDiscount.impls.ProductDiscountServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,32 +8,25 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-@RequestMapping("/doc")
+@RequestMapping("/productDiscount")
 @CrossOrigin("*")
 @Controller
-public class DocWebController {
+public class ProductDiscountWebController {
     @Autowired
-    DocServiceImpl docService;
+    ProductDiscountServiceImpl productDiscountService;
 
     /* CREATE */
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public String create(Model model) {
-        return "/doc/create";
+        return "/productDiscount/create";
     }
 
     /* LIST */
 
     @RequestMapping("/list")
     public String list(Model model) {
-        model.addAttribute("docs", docService.getAll());
-        return "/doc/list";
-    }
-
-    /* SEARCH */
-
-    @RequestMapping("/search")
-    public String search(Model model) {
-        return "/doc/search";
+        model.addAttribute("products", productDiscountService.getAll());
+        return "/productDiscount/list";
     }
 }

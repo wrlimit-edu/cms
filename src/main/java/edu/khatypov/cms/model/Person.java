@@ -24,6 +24,14 @@ public class Person {
         this.gender = gender;
     }
 
+    public Person(String id, String firstName, String middleName, String lastName, Boolean gender) {
+        this.id = id;
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.lastName = lastName;
+        this.gender = gender;
+    }
+
     public String getId() {
         return id;
     }

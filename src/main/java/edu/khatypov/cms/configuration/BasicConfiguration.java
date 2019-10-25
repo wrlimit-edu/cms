@@ -14,13 +14,16 @@ public class BasicConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
                 .inMemoryAuthentication()
-                .withUser("user")
-                .password("password")
-                .roles("USER")
-                .and()
+
                 .withUser("admin")
-                .password("{noop}admin")
-                .roles("USER", "ADMIN");
+                .password("{noop}14589*")
+                .roles("USER", "ADMIN")
+
+                .and()
+
+                .withUser("user")
+                .password("{noop}14589*")
+                .roles("USER");
     }
 
     @Override

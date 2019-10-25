@@ -97,7 +97,7 @@ public class CustomerDiscountWebController {
             );
             customerDiscountService.update(customerDiscount);
             model.addAttribute("customerDiscounts", customerDiscountService.getAll());
-            model.addAttribute("successMessage", "Скидка <strong>" + customerDiscountForm.getName() + "</strong> изменена!");
+            model.addAttribute("successMessage", "Скидка <strong>" + customerDiscountForm.getName() + "</strong> обновлена!");
             url = "/customerDiscount/list";
         }
         return url;

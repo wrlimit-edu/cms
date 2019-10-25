@@ -34,7 +34,7 @@ public class CustomerServiceImpl implements ICustomerService {
                         Arrays.asList(
                                 new Customer(
                                         personService.getAll().get(0),
-                                        1,
+                                        321,
                                         "0951234567",
                                         "Львов, Тихая 16/24",
                                         customerDiscountService.getAll().get(0),
@@ -42,7 +42,7 @@ public class CustomerServiceImpl implements ICustomerService {
                                 ),
                                 new Customer(
                                         personService.getAll().get(1),
-                                        2,
+                                        322,
                                         "0506541235",
                                         "Черновцы, Главная 245/16",
                                         customerDiscountService.getAll().get(2),
@@ -50,7 +50,7 @@ public class CustomerServiceImpl implements ICustomerService {
                                 ),
                                 new Customer(
                                         personService.getAll().get(2),
-                                        3,
+                                        323,
                                         "0974582135",
                                         "Винница, Садовая 85/31",
                                         customerDiscountService.getAll().get(1),
@@ -58,7 +58,7 @@ public class CustomerServiceImpl implements ICustomerService {
                                 ),
                                 new Customer(
                                         personService.getAll().get(3),
-                                        25,
+                                        324,
                                         "0977954632",
                                         "Черновцы, Ивасюка 15/28",
                                         customerDiscountService.getAll().get(0),
@@ -66,7 +66,7 @@ public class CustomerServiceImpl implements ICustomerService {
                                 ),
                                 new Customer(
                                         personService.getAll().get(4),
-                                        328,
+                                        325,
                                         "0506248521",
                                         "Киев, Независимости 134/5",
                                         customerDiscountService.getAll().get(3),
