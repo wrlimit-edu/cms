@@ -10,4 +10,7 @@ public interface IProductDiscountService {
     ProductDiscount update(ProductDiscount productDiscount);
     ProductDiscount delete(String id);
     List<ProductDiscount> getAll();
+
+    ProductDiscount getByName(String name);
+    List<ProductDiscount> getAllByEnabled(boolean enable);
 }

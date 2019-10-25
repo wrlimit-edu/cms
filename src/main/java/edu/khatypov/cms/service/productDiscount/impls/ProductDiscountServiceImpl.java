@@ -60,4 +60,14 @@ public class ProductDiscountServiceImpl implements IProductDiscountService {
     public List<ProductDiscount> getAll() {
         return productDiscountRepository.findAll(Sort.by(Sort.Direction.ASC, "value"));
     }
+
+    @Override
+    public ProductDiscount getByName(String name) {
+        return productDiscountRepository.findByNameIgnoreCase(name);
+    }
+
+    @Override
+    public List<ProductDiscount> getAllByEnabled(boolean enable) {
+        return productDiscountRepository.findAllByEnabledOrderByValue(enable);
+    }
 }

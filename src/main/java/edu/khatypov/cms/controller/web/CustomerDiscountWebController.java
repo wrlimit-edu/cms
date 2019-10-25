@@ -77,12 +77,6 @@ public class CustomerDiscountWebController {
         CustomerDiscount customerDiscountByName = customerDiscountService.getByName(customerDiscountForm.getName());
         if (customerDiscountByName != null && customerDiscountByName.hashCode() != customerDiscountForm.hashCode()) {
             errorMessage = "Ошибка! Скидка с названием <strong>" + customerDiscountForm.getName() + "</strong> уже существует!";
-        } else if (
-                customerDiscountForm.isEnabled() == false
-                && customerDiscountService.getAllByEnabled(true).size() == 1
-                && customerDiscountService.getAllByEnabled(true).get(0).hashCode() == customerDiscountForm.hashCode()
-        ) {
-            errorMessage = "Ошибка! Минимум один вариант скидки должен быть включен!";
         }
         if (errorMessage != null) {
             Map<String, String> enabledMap = new LinkedHashMap<String, String>() {{

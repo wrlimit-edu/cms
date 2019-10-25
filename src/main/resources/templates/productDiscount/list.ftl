@@ -44,7 +44,7 @@
                         <td>${productDiscount.name}</td>
                         <td>Скидка ${productDiscount.value}%</td>
                         <td>${enabled}</td>
-                        <td class="my-table-edit" style="background-image: url(/images/icons48/edit.png);" onClick="location.href='/customerDiscount/update/${productDiscount.id}'"></td>
+                        <td class="my-table-edit" style="background-image: url(/images/icons48/edit.png);" onClick="location.href='/productDiscount/update/${productDiscount.id}'"></td>
                     </tr>
                 </#list>
                 </tbody>
