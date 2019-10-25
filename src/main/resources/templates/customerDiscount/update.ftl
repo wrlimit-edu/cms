@@ -30,18 +30,24 @@
                             <@spring.formInput "customerDiscountForm.name" "class='form-control' required" "text"/>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Процент скидки</label>
-                        <div class="col-sm-9">
-                            <@spring.formInput "customerDiscountForm.value" "class='form-control' min='0' max='20' step='1'" "number"/>
+
+                    <#if customerDiscountForm.value == 0>
+                        <@spring.formHiddenInput "customerDiscountForm.value"/>
+                        <@spring.formHiddenInput "customerDiscountForm.enabled"/>
+                    <#else>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Процент скидки</label>
+                            <div class="col-sm-9">
+                                <@spring.formInput "customerDiscountForm.value" "class='form-control' min='1' max='20' step='1'" "number"/>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Статус</label>
-                        <div class="col-sm-9">
-                            <@spring.formSingleSelect "customerDiscountForm.enabled", enabledMap, "class='form-control'"/>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Статус</label>
+                            <div class="col-sm-9">
+                                <@spring.formSingleSelect "customerDiscountForm.enabled", enabledMap, "class='form-control'"/>
+                            </div>
                         </div>
-                    </div>
+                    </#if>
                 </li>
                 <li class="list-group-item text-right my-form-group-footer">
                     <input type="submit" value="Сохранить"  class="btn btn-sm btn-outline-secondary"/>

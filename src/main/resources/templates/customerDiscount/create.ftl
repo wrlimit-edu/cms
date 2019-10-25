@@ -31,7 +31,7 @@
                     <div class="form-group row">
                         <label class="col-sm-3 col-form-label">Процент скидки</label>
                         <div class="col-sm-9">
-                            <@spring.formInput "customerDiscountForm.value" "class='form-control' min='0' max='20' step='1'" "number"/>
+                            <@spring.formInput "customerDiscountForm.value" "class='form-control' min='1' max='20' step='1'" "number"/>
                         </div>
                     </div>
                 </li>

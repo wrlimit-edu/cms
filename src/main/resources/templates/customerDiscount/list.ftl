@@ -14,7 +14,7 @@
         <li class="list-group-item p-0">
             <div class="d-flex flex-row">
                 <div class="my-list-group-header-icon" style="background-image: url(/images/icons48/discount.png);"></div>
-                <div class="my-list-group-header-title">Скидки для клиентов</div>
+                <div class="my-list-group-header-title">Скидки клиентов</div>
                 <div class="ml-auto my-list-group-header-btns">
                     <div class="btn-group btn-group-sm">
                         <a class="btn btn-outline-secondary" href="/customerDiscount/create">Добавить</a>
@@ -42,7 +42,7 @@
                     </#if>
                     <tr>
                         <td>${customerDiscount.name}</td>
-                        <td>Cкидка ${customerDiscount.value}%</td>
+                        <td>Скидка ${customerDiscount.value}%</td>
                         <td>${enabled}</td>
                         <td class="my-table-edit" style="background-image: url(/images/icons48/edit.png);" onClick="location.href='/customerDiscount/update/${customerDiscount.id}'"></td>
                     </tr>

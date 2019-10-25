@@ -30,9 +30,13 @@ public class CustomerDiscountWebController {
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String create(Model model, @ModelAttribute("customerDiscountForm") CustomerDiscountForm customerDiscountForm) {
         String url = "/customerDiscount/create";
+        String errorMessage = null;
         if (customerDiscountService.getByName(customerDiscountForm.getName()) != null) {
+            errorMessage = "Ошибка! Скидка с названием <strong>" + customerDiscountForm.getName() + "</strong> уже существует!";
+        }
+        if (errorMessage != null) {
             model.addAttribute("customerDiscountForm", customerDiscountForm);
-            model.addAttribute("errorMessage", "Ошибка! Скидка с названием <strong>" + customerDiscountForm.getName() + "</strong> уже существует!");
+            model.addAttribute("errorMessage", errorMessage);
         } else {
             CustomerDiscount customerDiscount = new CustomerDiscount(
                     customerDiscountForm.getName(),

@@ -26,7 +26,7 @@ public class ProductDiscountWebController {
 
     @RequestMapping("/list")
     public String list(Model model) {
-        model.addAttribute("products", productDiscountService.getAll());
+        model.addAttribute("productDiscounts", productDiscountService.getAll());
         return "/productDiscount/list";
     }
 }
