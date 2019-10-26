@@ -1,6 +1,6 @@
 package edu.khatypov.cms.controller.web;
 
-import edu.khatypov.cms.service.person.impls.PersonServiceImpl;
+import edu.khatypov.cms.service.product.impls.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class ProductWebController {
     @Autowired
-    PersonServiceImpl personService;
+    ProductServiceImpl productService;
 
     /* CREATE */
 
@@ -26,7 +26,7 @@ public class ProductWebController {
 
     @RequestMapping("/list")
     public String list(Model model) {
-        model.addAttribute("products", personService.getAll());
+        model.addAttribute("products", productService.getAll());
         return "/product/list";
     }
 

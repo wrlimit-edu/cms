@@ -32,6 +32,17 @@ public class Doc {
         this.sum = sum;
     }
 
+    public Doc(String id, int number, LocalDate date, Boolean status, Boolean type, Customer customer, List<Product> products, float sum) {
+        this.id = id;
+        this.number = number;
+        this.date = date;
+        this.status = status;
+        this.type = type;
+        this.customer = customer;
+        this.products = products;
+        this.sum = sum;
+    }
+
     public String getId() {
         return id;
     }

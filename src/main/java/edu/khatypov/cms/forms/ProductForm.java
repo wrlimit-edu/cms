@@ -1,12 +1,13 @@
-package edu.khatypov.cms.model;
+package edu.khatypov.cms.forms;
 
+import edu.khatypov.cms.model.ProductDiscount;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Objects;
 
 @Document
-public class Product {
+public class ProductForm {
     @Id
     private String id;
     private int number;
@@ -15,28 +16,6 @@ public class Product {
     private float price;
     private ProductDiscount productDiscount;
     private int amount;
-
-    public Product() {
-    }
-
-    public Product(int number, String name, String description, float price, ProductDiscount productDiscount, int amount) {
-        this.number = number;
-        this.name = name;
-        this.description = description;
-        this.price = price;
-        this.productDiscount = productDiscount;
-        this.amount = amount;
-    }
-
-    public Product(String id, int number, String name, String description, float price, ProductDiscount productDiscount, int amount) {
-        this.id = id;
-        this.number = number;
-        this.name = name;
-        this.description = description;
-        this.price = price;
-        this.productDiscount = productDiscount;
-        this.amount = amount;
-    }
 
     public String getId() {
         return id;
@@ -96,7 +75,7 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product{" +
+        return "ProductForm{" +
                 "id='" + id + '\'' +
                 ", number=" + number +
                 ", name='" + name + '\'' +
@@ -111,8 +90,8 @@ public class Product {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Product product = (Product) o;
-        return Objects.equals(id, product.id);
+        ProductForm that = (ProductForm) o;
+        return Objects.equals(id, that.id);
     }
 
     @Override
