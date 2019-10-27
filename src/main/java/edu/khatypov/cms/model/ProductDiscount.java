@@ -61,6 +61,10 @@ public class ProductDiscount {
         this.enabled = enabled;
     }
 
+    public String getLongName() {
+        return name + " (" + value + "%)";
+    }
+
     @Override
     public String toString() {
         return "ProductDiscount{" +

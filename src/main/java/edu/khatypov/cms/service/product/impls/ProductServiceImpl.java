@@ -99,4 +99,9 @@ public class ProductServiceImpl implements IProductService {
     public List<Product> getAll() {
         return productRepository.findAll();
     }
+
+    @Override
+    public Product getByMaxNumber() {
+        return productRepository.findTopByOrderByNumberDesc();
+    }
 }

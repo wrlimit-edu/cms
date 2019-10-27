@@ -10,4 +10,6 @@ public interface IProductService {
     Product update(Product product);
     Product delete(String id);
     List<Product> getAll();
+
+    Product getByMaxNumber();
 }
