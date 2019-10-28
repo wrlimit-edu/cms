@@ -44,27 +44,20 @@ public class ProductWebController {
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String create(Model model, @ModelAttribute("productForm") ProductForm productForm) {
-        String url = "/product/create";
-        String errorMessage = null;
-        if (errorMessage != null) {
-            /* >>>>>>>>>>>>>>>>>>>>>>>>>>> */
-        } else {
-            int number = productService.getByMaxNumber().getNumber() + 1;
-            ProductDiscount productDiscount = productDiscountService.get(productForm.getProductDiscount().getId());
-            Product product = new Product(
-                    number,
-                    productForm.getName(),
-                    productForm.getDescription(),
-                    productForm.getPrice(),
-                    productDiscount,
-                    productForm.getAmount()
-            );
-            productService.create(product);
-            model.addAttribute("products", productService.getAll());
-            model.addAttribute("successMessage", "Товар <strong>" + productForm.getName() + "</strong> добавлен!");
-            url = "/product/list";
-        }
-        return url;
+        int number = productService.getByMaxNumber().getNumber() + 1;
+        ProductDiscount productDiscount = productDiscountService.get(productForm.getProductDiscount().getId());
+        Product product = new Product(
+                number,
+                productForm.getName(),
+                productForm.getDescription(),
+                productForm.getPrice(),
+                productDiscount,
+                productForm.getAmount()
+        );
+        productService.create(product);
+        model.addAttribute("products", productService.getAll());
+        model.addAttribute("successMessage", "Товар <strong>" + productForm.getName() + "</strong> добавлен!");
+        return "/product/list";
     }
 
     /* LIST */

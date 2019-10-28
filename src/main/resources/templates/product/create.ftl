@@ -3,7 +3,7 @@
 <@c.page title="CMS / Добавить товар">
 
     <div class="row h-100 justify-content-center align-items-center">
-        <form name="person" action=""  method="post">
+        <form name="person" action="" method="post">
             <ul class="list-group shadow-sm rounded" style="width: 600px;">
                 <li class="list-group-item p-0">
                     <div class="d-flex flex-row">
