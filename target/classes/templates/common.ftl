@@ -53,7 +53,6 @@
                                 <a class="dropdown-item btn-sm" href="/product/create">Добавить</a>
                             </div>
                         </li>
-
                         <li class="nav-item dropdown">
                             <a class="nav-link btn-sm" id="navbarSettings" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Настройки

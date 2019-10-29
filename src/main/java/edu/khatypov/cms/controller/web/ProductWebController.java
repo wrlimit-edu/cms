@@ -8,10 +8,7 @@ import edu.khatypov.cms.service.productDiscount.impls.ProductDiscountServiceImpl
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -57,6 +54,51 @@ public class ProductWebController {
         productService.create(product);
         model.addAttribute("products", productService.getAll());
         model.addAttribute("successMessage", "Товар <strong>" + productForm.getName() + "</strong> добавлен!");
+        return "/product/list";
+    }
+
+    /* UPDATE */
+
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
+    public String update(Model model,  @PathVariable("id") String id) {
+        Product product = productService.get(id);
+        List<ProductDiscount> list = productDiscountService.getAllByEnabled(true);
+        Map<String, String> productDiscountMap = new LinkedHashMap<String, String>();
+        for (int i = 0; i < list.size(); i++) {
+            productDiscountMap.put(list.get(i).getId(), list.get(i).getLongName());
+        }
+        if (list.contains(product.getProductDiscount()) == false) {
+            productDiscountMap.put(product.getProductDiscount().getId(), product.getProductDiscount().getLongName());
+        }
+        model.addAttribute("productDiscountMap", productDiscountMap);
+        ProductForm productForm = new ProductForm();
+        productForm.setId(id);
+        productForm.setNumber(product.getNumber());
+        productForm.setName(product.getName());
+        productForm.setDescription(product.getDescription());
+        productForm.setPrice(product.getPrice());
+        productForm.setProductDiscount(product.getProductDiscount());
+        productForm.setAmount(product.getAmount());
+        model.addAttribute("productForm", productForm);
+        return "/product/update";
+    }
+
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public String update(Model model, @ModelAttribute("person") ProductForm productForm) {
+        String url = "/product/update";
+        ProductDiscount productDiscount = productDiscountService.get(productForm.getProductDiscount().getId());
+        Product product = new Product(
+                productForm.getId(),
+                productForm.getNumber(),
+                productForm.getName(),
+                productForm.getDescription(),
+                productForm.getPrice(),
+                productForm.getProductDiscount(),
+                productForm.getAmount()
+        );
+        productService.update(product);
+        model.addAttribute("products", productService.getAll());
+        model.addAttribute("successMessage", "Товат <strong>" + productForm.getName() + "</strong> обновлен!");
         return "/product/list";
     }
 
