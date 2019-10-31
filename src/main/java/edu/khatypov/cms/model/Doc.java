@@ -98,15 +98,18 @@ public class Doc {
 
     public int getAllAmount() {
         int amount = 0;
-        for (int i = 0; i < products.size(); i++) {
-            amount += products.get(i).getAmount();
+        for (Product product : products) {
+            amount += product.getAmount();
         }
         return amount;
     }
 
     public float getSum() {
-
-        return 0;
+        float sum = 0;
+        for (Product product : products) {
+            sum += (product.getPrice() - product.getPrice() / 100 * product.getProductDiscount().getValue()) * product.getAmount();
+        }
+        return sum;
     }
 
     @Override

@@ -57,7 +57,7 @@
                         <td>${type}</td>
                         <td>${doc.customer.person.getFullName()}</td>
                         <td>${doc.getAllAmount()}</td>
-                        <td>${doc.getSum()}</td>
+                        <td>${doc.getSum()?string["0.00"]} грн.</td>
                     </tr>
                 </#list>
                 </tbody>

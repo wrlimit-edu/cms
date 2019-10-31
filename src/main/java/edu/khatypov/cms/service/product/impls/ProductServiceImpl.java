@@ -55,7 +55,7 @@ public class ProductServiceImpl implements IProductService {
                                         126,
                                         "Футболка",
                                         "Тонкая белая с рисунком",
-                                        95.99f,
+                                        95.50f,
                                         productDiscountService.getAll().get(0),
                                         23
                                 ),
