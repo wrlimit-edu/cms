@@ -72,6 +72,10 @@ public class Person {
         this.gender = gender;
     }
 
+    public String getFullName() {
+        return lastName + " " + firstName + " " + middleName;
+    }
+
     @Override
     public String toString() {
         return "Person{" +

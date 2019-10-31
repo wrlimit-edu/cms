@@ -55,9 +55,9 @@
                         <td>${doc.date}</td>
                         <td>${status}</td>
                         <td>${type}</td>
-                        <td>${doc.customer.person.lastName} ${doc.customer.person.firstName} ${doc.customer.person.middleName}</td>
-                        <td>---</td>
-                        <td>${doc.sum}</td>
+                        <td>${doc.customer.person.getFullName()}</td>
+                        <td>${doc.getAllAmount()}</td>
+                        <td>${doc.getSum()}</td>
                     </tr>
                 </#list>
                 </tbody>

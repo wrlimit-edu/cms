@@ -4,6 +4,7 @@ import edu.khatypov.cms.model.Doc;
 import edu.khatypov.cms.repository.DocRepository;
 import edu.khatypov.cms.service.customer.impls.CustomerServiceImpl;
 import edu.khatypov.cms.service.doc.interfaces.IDocService;
+import edu.khatypov.cms.service.product.impls.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +23,9 @@ public class DocServiceImpl implements IDocService {
     @Autowired
     CustomerServiceImpl customerService;
 
+    @Autowired
+    ProductServiceImpl productService;
+
     /* temp */
     @PostConstruct
     void init() {
@@ -35,8 +39,14 @@ public class DocServiceImpl implements IDocService {
                                         false,
                                         true,
                                         customerService.getAll().get(0),
-                                        null,
-                                        254.50f
+                                        new ArrayList<>(
+                                                Arrays.asList(
+                                                        productService.getAll().get(0),
+                                                        productService.getAll().get(2),
+                                                        productService.getAll().get(1),
+                                                        productService.getAll().get(3)
+                                                )
+                                        )
                                 )
                         )
                 )

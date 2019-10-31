@@ -17,22 +17,20 @@ public class Doc {
     private Boolean type;
     private Customer customer;
     private List<Product> products;
-    private float sum;
 
     public Doc() {
     }
 
-    public Doc(int number, LocalDate date, Boolean status, Boolean type, Customer customer, List<Product> products, float sum) {
+    public Doc(int number, LocalDate date, Boolean status, Boolean type, Customer customer, List<Product> products) {
         this.number = number;
         this.date = date;
         this.status = status;
         this.type = type;
         this.customer = customer;
         this.products = products;
-        this.sum = sum;
     }
 
-    public Doc(String id, int number, LocalDate date, Boolean status, Boolean type, Customer customer, List<Product> products, float sum) {
+    public Doc(String id, int number, LocalDate date, Boolean status, Boolean type, Customer customer, List<Product> products) {
         this.id = id;
         this.number = number;
         this.date = date;
@@ -40,7 +38,6 @@ public class Doc {
         this.type = type;
         this.customer = customer;
         this.products = products;
-        this.sum = sum;
     }
 
     public String getId() {
@@ -99,12 +96,17 @@ public class Doc {
         this.products = products;
     }
 
-    public float getSum() {
-        return sum;
+    public int getAllAmount() {
+        int amount = 0;
+        for (int i = 0; i < products.size(); i++) {
+            amount += products.get(i).getAmount();
+        }
+        return amount;
     }
 
-    public void setSum(float sum) {
-        this.sum = sum;
+    public float getSum() {
+
+        return 0;
     }
 
     @Override
@@ -117,7 +119,6 @@ public class Doc {
                 ", type=" + type +
                 ", customer=" + customer +
                 ", products=" + products +
-                ", sum=" + sum +
                 '}';
     }
 
