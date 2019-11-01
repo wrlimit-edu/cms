@@ -37,11 +37,19 @@
                 </thead>
                 <tbody>
                     <#list products as product>
+                        <#--
+                        <#if product.productDiscount.value == 0>
+                            <#assign price = product.price?string["0.00"] + " грн.">
+                        <#else>
+                            <#assign price = "<s>" + product.price?string["0.00"] + " грн.</s> <span class='text-danger'>" + product.getDiscountPrice()?string["0.00"] + ' грн.</span>'>
+                        </#if>
+                        -->
+
                         <tr>
                             <td class="my-table-code">${product.number?string["00000"]}</td>
                             <td>${product.name}</td>
                             <td>${product.description}</td>
-                            <td>${product.price?string["0.00"]} грн.</td>
+                            <td>${product.getFullPriceString()}</td>
                             <td>${product.productDiscount.name} (${product.productDiscount.value}%)</td>
                             <td>${product.amount}</td>
                             <td class="my-table-edit" style="background-image: url(/images/icons48/edit.png);" onClick="location.href='/product/update/${product.id}'"></td>

@@ -45,9 +45,15 @@
                     </#if>
 
                     <#if doc.type == true>
-                        <#assign type = "Онлайн">
+                        <#assign type = "<span class='text-success'>Онлайн</span>">
                     <#else>
-                        <#assign type = "Офлайн">
+                        <#assign type = "<span class='text-primary'>Офлайн</span>">
+                    </#if>
+
+                    <#if doc.type == true>
+                        <#assign type = "<span class='text-success'>Онлайн</span>">
+                    <#else>
+                        <#assign type = "<span class='text-primary'>Офлайн</span>">
                     </#if>
 
                     <tr onClick="location.href='/doc/get/${doc.id}'">

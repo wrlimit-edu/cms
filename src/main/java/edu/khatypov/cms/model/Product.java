@@ -94,6 +94,21 @@ public class Product {
         this.amount = amount;
     }
 
+    public float getDiscountPrice() {
+        return price - price / 100 * productDiscount.getValue();
+    }
+
+    public String getFullPriceString() {
+        String priceStr;
+        if (productDiscount.getValue() > 0) {
+            float discountPrice = price - price / 100 * productDiscount.getValue();
+            priceStr = "<s>" + price + " грн.</s> <span class='text-danger'>" + discountPrice + " грн.</span>";
+        } else {
+            priceStr = price + " грн.";
+        }
+        return priceStr;
+    }
+
     @Override
     public String toString() {
         return "Product{" +
