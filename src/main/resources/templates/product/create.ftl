@@ -55,7 +55,7 @@
 
                 </li>
                 <li class="list-group-item text-right my-form-group-footer">
-                    <input type="submit" value="Сохранить"  class="btn btn-sm btn-outline-secondary"/>
+                    <input type="submit" value="Сохранить" class="btn btn-sm btn-outline-secondary"/>
                 </li>
             </ul>
         </form>

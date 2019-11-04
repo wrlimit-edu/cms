@@ -48,8 +48,6 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarProducts">
                                 <a class="dropdown-item btn-sm" href="/product/list">Все товары</a>
-                                <a class="dropdown-item btn-sm" href="/product/search">Поиск</a>
-                                <div class="dropdown-divider"></div>
                                 <a class="dropdown-item btn-sm" href="/product/create">Добавить</a>
                             </div>
                         </li>

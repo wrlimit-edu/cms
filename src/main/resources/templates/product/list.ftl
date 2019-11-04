@@ -16,9 +16,17 @@
                 <div class="my-list-group-header-icon" style="background-image: url(/images/icons48/box.png);"></div>
                 <div class="my-list-group-header-title">Товары</div>
                 <div class="ml-auto my-list-group-header-btns">
-                    <div class="btn-group btn-group-sm">
-                        <a class="btn btn-outline-secondary" href="/product/create">Добавить</a>
-                    </div>
+                    <a class="btn btn-sm btn-outline-secondary" href="/customer/create">Добавить товар</a>
+                </div>
+                <div class="my-list-group-header-search">
+                    <form name="searchForm" action="/product/search" method="post">
+                        <div class="input-group" style="margin: 0">
+                            <input type="search" name="search" class="form-control form-control-sm border-secondary text-secondary" autofocus>
+                            <div class="input-group-append">
+                                <input type="submit" value="Найти" class="btn btn-sm btn-outline-secondary"/>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </li>

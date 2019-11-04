@@ -32,9 +32,9 @@ html, body {
 .my-list-group-header-btns {
     padding: 12px 20px;
 }
-.my-list-search {
-    width: 200px;
-    margin-left: 12px;
+.my-list-group-header-search {
+    width: 250px;
+    padding: 12px 20px 12px 0;
 }
 .my-list-group-body {
     padding: 18px;

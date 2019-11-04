@@ -112,8 +112,16 @@ public class ProductWebController {
 
     /* SEARCH */
 
-    @RequestMapping("/search")
-    public String search(Model model) {
-        return "/product/search";
+    @RequestMapping(value = "/search", method = RequestMethod.POST)
+    public String search(Model model, @ModelAttribute("search") String search) {
+
+        /////////////////////////
+
+        System.out.println(search);
+
+        /////////////////////////
+
+        model.addAttribute("products", productService.getAll());
+        return "/product/list";
     }
 }
