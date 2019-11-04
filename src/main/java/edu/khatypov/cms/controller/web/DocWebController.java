@@ -180,6 +180,9 @@ public class DocWebController {
         product.setAmount(product.getAmount() + docService.get(docId).getProducts().get(productIndex).getAmount());
         productService.update(product);
         doc.getProducts().remove(productIndex);
+        if (doc.getProducts().size() == 0) {
+            doc.setProducts(null);
+        }
         doc = docService.update(doc);
         model.addAttribute("doc", doc);
         return "/doc/get";

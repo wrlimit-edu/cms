@@ -29,14 +29,12 @@ html, body {
     font-weight: bold;
     color: #39D;
 }
-.my-list-group-header-title-2 {
-    padding-top: 14px;
-    padding-left: 20px;
-    font-size: 14px;
-    font-weight: bold;
-}
 .my-list-group-header-btns {
     padding: 12px 20px;
+}
+.my-list-search {
+    width: 200px;
+    margin-left: 12px;
 }
 .my-list-group-body {
     padding: 18px;
@@ -90,4 +88,23 @@ html, body {
 /* my-form */
 .my-form-radiobutton {
     color: #3399DD;
+}
+
+/* my-pg-btn */
+.my-pg-btn-line {
+    max-width: 719px;
+}
+.my-pg-btn {
+    width: 160px;
+    height: 100px;
+    background-position: 50% 20px;
+    background-repeat: no-repeat;
+    background-size: 32px 32px;
+    margin: 6px 4px;
+}
+.my-pg-btn-name {
+    padding-top: 45px;
+    color: #333;
+    font-size: 14px;
+    font-weight: bold;
 }

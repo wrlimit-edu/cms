@@ -81,9 +81,11 @@
                                 <th>Цена</th>
                                 <th>Количество</th>
                                 <th>Сумма</th>
-                                <th class="my-table-edit"></th>
-                                <th class="my-table-edit"></th>
-                                <th class="my-table-edit"></th>
+                                <#if doc.status == true>
+                                    <th class="my-table-edit"></th>
+                                    <th class="my-table-edit"></th>
+                                    <th class="my-table-edit"></th>
+                                </#if>
                             </tr>
                         </thead>
                         <tbody>
@@ -96,9 +98,11 @@
                                     <td>${product.getFullPriceString()}</td>
                                     <td>${product.amount}</td>
                                     <td>${product.getSum()?string["0.00"]} грн.</td>
-                                    <td class="my-table-edit" style="background-image: url(/images/icons48/add.png);" onClick="location.href='/doc/productPlus/${doc.id}/${product.id}'"></td>
-                                    <td class="my-table-edit" style="background-image: url(/images/icons48/subtract.png);" onClick="location.href='/doc/productMinus/${doc.id}/${product.id}'"></td>
-                                    <td class="my-table-edit" style="background-image: url(/images/icons48/delete.png);" onClick="location.href='/doc/productDelete/${doc.id}/${product.id}'"></td>
+                                    <#if doc.status == true>
+                                        <td class="my-table-edit" style="background-image: url(/images/icons48/add.png);" onClick="location.href='/doc/productPlus/${doc.id}/${product.id}'"></td>
+                                        <td class="my-table-edit" style="background-image: url(/images/icons48/subtract.png);" onClick="location.href='/doc/productMinus/${doc.id}/${product.id}'"></td>
+                                        <td class="my-table-edit" style="background-image: url(/images/icons48/delete.png);" onClick="location.href='/doc/productDelete/${doc.id}/${product.id}'"></td>
+                                    </#if>
                                 </tr>
                             </#list>
                             <tr>

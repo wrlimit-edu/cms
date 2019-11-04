@@ -16,8 +16,15 @@
                 <div class="my-list-group-header-icon" style="background-image: url(/images/icons48/contacts.png);"></div>
                 <div class="my-list-group-header-title">Клиенты</div>
                 <div class="ml-auto my-list-group-header-btns">
-                    <div class="btn-group btn-group-sm">
-                        <a class="btn btn-outline-secondary" href="/customer/create">Добавить</a>
+                    <div class="form-row">
+                        <div class="form-group col" style="margin-bottom: 0">
+                            <form name="search" action="/product/search" method="get">
+                                <input type="search" name="search" class="form-control form-control-sm border-secondary text-secondary my-list-search" autofocus>
+                            </form>
+                        </div>
+                        <div class="form-group col" style="margin-bottom: 0">
+                            <a class="btn btn-sm btn-outline-secondary" href="/customer/create">Добавить клиента</a>
+                        </div>
                     </div>
                 </div>
             </div>
