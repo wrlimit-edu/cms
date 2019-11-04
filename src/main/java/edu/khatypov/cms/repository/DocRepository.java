@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface DocRepository extends MongoRepository<Doc, String> {
+    Doc findTopByOrderByNumberDesc();
 }

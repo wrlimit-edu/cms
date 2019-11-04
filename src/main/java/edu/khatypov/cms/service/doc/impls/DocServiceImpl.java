@@ -7,6 +7,7 @@ import edu.khatypov.cms.service.customer.impls.CustomerServiceImpl;
 import edu.khatypov.cms.service.doc.interfaces.IDocService;
 import edu.khatypov.cms.service.product.impls.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -60,10 +61,31 @@ public class DocServiceImpl implements IDocService {
                                 )
                         ),
                         new Doc(
-                                56,
-                                LocalDate.of(2019, Month.MAY, 7),
+                                57,
+                                LocalDate.of(2019, Month.JULY, 23),
                                 true,
                                 true,
+                                null,
+                                new ArrayList<>(
+                                        Arrays.asList(
+                                                productService.getAll().get(0),
+                                                productService.getAll().get(1)
+                                        )
+                                )
+                        ),
+                        new Doc(
+                                58,
+                                LocalDate.of(2019, Month.AUGUST, 3),
+                                true,
+                                false,
+                                customerService.getAll().get(0),
+                                null
+                        ),
+                        new Doc(
+                                59,
+                                LocalDate.of(2019, Month.AUGUST, 14),
+                                true,
+                                false,
                                 customerService.getAll().get(3),
                                 new ArrayList<>(
                                         Arrays.asList(
@@ -76,16 +98,17 @@ public class DocServiceImpl implements IDocService {
                         )
                 )
         );
-
         list.get(0).getProducts().get(0).setAmount(1);
         list.get(0).getProducts().get(1).setAmount(2);
         list.get(0).getProducts().get(2).setAmount(1);
         list.get(1).getProducts().get(0).setAmount(1);
         list.get(1).getProducts().get(1).setAmount(2);
-        list.get(2).getProducts().get(0).setAmount(3);
+        list.get(2).getProducts().get(0).setAmount(2);
         list.get(2).getProducts().get(1).setAmount(1);
-        list.get(2).getProducts().get(2).setAmount(2);
-        list.get(2).getProducts().get(3).setAmount(1);
+        list.get(4).getProducts().get(0).setAmount(3);
+        list.get(4).getProducts().get(1).setAmount(1);
+        list.get(4).getProducts().get(2).setAmount(2);
+        list.get(4).getProducts().get(3).setAmount(1);
         docRepository.deleteAll();
         docRepository.saveAll(list);
     }
@@ -115,6 +138,11 @@ public class DocServiceImpl implements IDocService {
 
     @Override
     public List<Doc> getAll() {
-        return docRepository.findAll();
+        return docRepository.findAll(Sort.by(Sort.Direction.ASC, "date"));
+    }
+
+    @Override
+    public Doc getByMaxNumber() {
+        return docRepository.findTopByOrderByNumberDesc();
     }
 }

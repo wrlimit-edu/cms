@@ -106,6 +106,11 @@ public class CustomerServiceImpl implements ICustomerService {
     }
 
     @Override
+    public List<Customer> getAllByEnabled(boolean enable) {
+        return customerRepository.findAllByEnabledOrderByPerson_lastName(enable);
+    }
+
+    @Override
     public Customer getByMaxNumber() {
         return customerRepository.findTopByOrderByNumberDesc();
     }

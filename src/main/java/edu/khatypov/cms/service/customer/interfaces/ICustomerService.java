@@ -11,6 +11,7 @@ public interface ICustomerService {
     Customer delete(String id);
     List<Customer> getAll();
 
+    List<Customer> getAllByEnabled(boolean enable);
     Customer getByMaxNumber();
     Customer getByPhone(String phone);
 }

@@ -96,20 +96,44 @@ public class Doc {
         this.products = products;
     }
 
-    public int getAllAmount() {
+    public int getProductsAmount() {
         int amount = 0;
-        for (Product product : products) {
-            amount += product.getAmount();
+        if (products != null) {
+            for (Product product : products) {
+                amount += product.getAmount();
+            }
         }
         return amount;
     }
 
-    public float getSum() {
+    public float getProductsSum() {
         float sum = 0;
-        for (Product product : products) {
-            sum += (product.getPrice() - product.getPrice() / 100 * product.getProductDiscount().getValue()) * product.getAmount();
+        if (products != null) {
+            for (Product product : products) {
+                sum += product.getDiscountPrice() * product.getAmount();
+            }
         }
         return sum;
+    }
+
+    public float getWholesaleDiscount() {
+        float discount = 0;
+        if (this.getProductsAmount() > 4) {
+            discount = (float) Math.round(getProductsSum() * 30) / 100;
+        }
+        return discount;
+    }
+
+    public float getCustomerDiscount() {
+        float discount = 0;
+        if (customer != null) {
+            discount = (float) Math.round((this.getProductsSum() - this.getWholesaleDiscount()) * customer.getCustomerDiscount().getValue()) / 100;
+        }
+        return discount;
+    }
+
+    public float getSum() {
+        return this.getProductsSum() - this.getWholesaleDiscount() - this.getCustomerDiscount();
     }
 
     @Override

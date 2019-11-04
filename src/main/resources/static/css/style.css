@@ -29,6 +29,12 @@ html, body {
     font-weight: bold;
     color: #39D;
 }
+.my-list-group-header-title-2 {
+    padding-top: 14px;
+    padding-left: 20px;
+    font-size: 14px;
+    font-weight: bold;
+}
 .my-list-group-header-btns {
     padding: 12px 20px;
 }

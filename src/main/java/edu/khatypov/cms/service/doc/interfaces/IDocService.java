@@ -10,4 +10,6 @@ public interface IDocService {
     Doc update(Doc doc);
     Doc delete(String id);
     List<Doc> getAll();
+
+    Doc getByMaxNumber();
 }

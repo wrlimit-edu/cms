@@ -4,6 +4,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Objects;
+import java.text.*;
 
 @Document
 public class Product {
@@ -95,18 +96,22 @@ public class Product {
     }
 
     public float getDiscountPrice() {
-        return price - price / 100 * productDiscount.getValue();
+        return (float) Math.round(price * 100 - price * productDiscount.getValue()) / 100;
     }
 
     public String getFullPriceString() {
         String priceStr;
-        if (productDiscount.getValue() > 0) {
-            float discountPrice = price - price / 100 * productDiscount.getValue();
-            priceStr = "<s>" + price + " грн.</s> <span class='text-danger'>" + discountPrice + " грн.</span>";
+        if (this.getDiscountPrice() != price) {
+            priceStr = "<s>" + new DecimalFormat("0.00").format(price) + " грн.</s> <span class='text-danger'>"
+                    + new DecimalFormat("0.00").format(this.getDiscountPrice()) + " грн.</span>";
         } else {
-            priceStr = price + " грн.";
+            priceStr = new DecimalFormat("0.00").format(price) + " грн.";
         }
         return priceStr;
+    }
+
+    public float getSum() {
+        return getDiscountPrice() * amount;
     }
 
     @Override
