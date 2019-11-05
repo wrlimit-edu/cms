@@ -1,15 +1,6 @@
 <#import "../common.ftl" as c/>
 <@c.page title="CMS / Скидки товаров">
 
-    <#if successMessage??>
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            ${successMessage}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    </#if>
-
     <ul class="list-group shadow-sm rounded">
         <li class="list-group-item p-0">
             <div class="d-flex flex-row">
@@ -25,28 +16,27 @@
         <li class="list-group-item my-list-group-body">
             <table class="table table-bordered table-sm table-hover">
                 <thead class="bg-light">
-                <tr>
-                    <th>Название</th>
-                    <th>Скидка</th>
-                    <th>Статус</th>
-                    <th class="my-table-edit"></th>
-                </tr>
+                    <tr>
+                        <th>Название</th>
+                        <th>Скидка</th>
+                        <th>Статус</th>
+                        <th class="my-table-edit"></th>
+                    </tr>
                 </thead>
                 <tbody>
-
-                <#list productDiscounts as productDiscount>
-                    <#if productDiscount.enabled == true>
-                        <#assign enabled = "<span class='text-success'>Включен</span>">
-                    <#else>
-                        <#assign enabled = "<span class='text-danger'>Отключен</span>">
-                    </#if>
-                    <tr>
-                        <td>${productDiscount.name}</td>
-                        <td>Скидка ${productDiscount.value}%</td>
-                        <td>${enabled}</td>
-                        <td class="my-table-edit" style="background-image: url(/images/icons48/edit.png);" onClick="location.href='/productDiscount/update/${productDiscount.id}'"></td>
-                    </tr>
-                </#list>
+                    <#list productDiscounts as productDiscount>
+                        <#if productDiscount.enabled == true>
+                            <#assign enabled = "<span class='text-success'>Включен</span>">
+                        <#else>
+                            <#assign enabled = "<span class='text-danger'>Отключен</span>">
+                        </#if>
+                        <tr>
+                            <td>${productDiscount.name}</td>
+                            <td>Скидка ${productDiscount.value}%</td>
+                            <td>${enabled}</td>
+                            <td class="my-table-edit" style="background-image: url(/images/icons48/edit.png);" onClick="location.href='/productDiscount/update/${productDiscount.id}'"></td>
+                        </tr>
+                    </#list>
                 </tbody>
             </table>
         </li>

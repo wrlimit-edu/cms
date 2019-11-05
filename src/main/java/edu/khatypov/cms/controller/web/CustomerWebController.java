@@ -3,6 +3,7 @@ package edu.khatypov.cms.controller.web;
 import edu.khatypov.cms.forms.CustomerForm;
 import edu.khatypov.cms.model.Customer;
 import edu.khatypov.cms.model.CustomerDiscount;
+import edu.khatypov.cms.model.Message;
 import edu.khatypov.cms.model.Person;
 import edu.khatypov.cms.service.customer.impls.CustomerServiceImpl;
 import edu.khatypov.cms.service.customerDiscount.impls.CustomerDiscountServiceImpl;
@@ -69,7 +70,7 @@ public class CustomerWebController {
             }
             model.addAttribute("customerDiscountMap", customerDiscountMap);
             model.addAttribute("customerForm", customerForm);
-            model.addAttribute("errorMessage", errorMessage);
+            model.addAttribute("message", new Message(errorMessage, "danger"));
             return "/customer/create";
         } else {
             Person person = new Person(
@@ -91,10 +92,7 @@ public class CustomerWebController {
             );
             customerService.create(customer);
             model.addAttribute("customers", customerService.getAll());
-            model.addAttribute("successMessage", "Клиент <strong>"
-                    + customerForm.getPerson().getLastName() + " "
-                    + customerForm.getPerson().getFirstName() + " "
-                    + customerForm.getPerson().getMiddleName() + "</strong> добавлен!");
+            model.addAttribute("message", new Message("Клиент <strong>" + customerForm.getPerson().getFullName() + "</strong> добавлен!", "success"));
             url = "/customer/list";
         }
         return url;
@@ -103,7 +101,7 @@ public class CustomerWebController {
     /* UPDATE */
 
     @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
-    public String update(Model model,  @PathVariable("id") String id) {
+    public String update(Model model, @PathVariable("id") String id) {
         Customer customer = customerService.get(id);
         Map<String, String> genderMap = new LinkedHashMap<String, String>() {{
             put("true", "Мужской");
@@ -164,7 +162,7 @@ public class CustomerWebController {
             }};
             model.addAttribute("enabledMap", enabledMap);
             model.addAttribute("customerForm", customerForm);
-            model.addAttribute("errorMessage", errorMessage);
+            model.addAttribute("message", new Message(errorMessage, "danger"));
         } else {
             Person person = new Person(
                     customerForm.getPerson().getId(),
@@ -186,10 +184,7 @@ public class CustomerWebController {
             );
             customerService.update(customer);
             model.addAttribute("customers", customerService.getAll());
-            model.addAttribute("successMessage", "Клиент <strong>"
-                    + customerForm.getPerson().getLastName() + " "
-                    + customerForm.getPerson().getFirstName() + " "
-                    + customerForm.getPerson().getMiddleName() + "</strong> обновлен!");
+            model.addAttribute("message", new Message("Клиент <strong>" + customerForm.getPerson().getFullName() + "</strong> обновлен!", "success"));
             url = "/customer/list";
         }
         return url;
@@ -201,12 +196,5 @@ public class CustomerWebController {
     public String list(Model model) {
         model.addAttribute("customers", customerService.getAll());
         return "/customer/list";
-    }
-
-    /* SEARCH */
-
-    @RequestMapping("/search")
-    public String search(Model model) {
-        return "/customer/search";
     }
 }

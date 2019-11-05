@@ -1,6 +1,7 @@
 package edu.khatypov.cms.controller.web;
 
 import edu.khatypov.cms.forms.ProductDiscountForm;
+import edu.khatypov.cms.model.Message;
 import edu.khatypov.cms.model.ProductDiscount;
 import edu.khatypov.cms.service.productDiscount.impls.ProductDiscountServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +37,7 @@ public class ProductDiscountWebController {
         }
         if (errorMessage != null) {
             model.addAttribute("productDiscountForm", productDiscountForm);
-            model.addAttribute("errorMessage", errorMessage);
+            model.addAttribute("message", new Message(errorMessage, "danger"));
         } else {
             ProductDiscount productDiscount = new ProductDiscount(
                     productDiscountForm.getName(),
@@ -45,7 +46,7 @@ public class ProductDiscountWebController {
             );
             productDiscountService.create(productDiscount);
             model.addAttribute("productDiscounts", productDiscountService.getAll());
-            model.addAttribute("successMessage", "Скидка <strong>" + productDiscountForm.getName() + "</strong> добавлена!");
+            model.addAttribute("message", new Message("Скидка <strong>" + productDiscountForm.getName() + "</strong> добавлена!", "success"));
             url = "/productDiscount/list";
         }
         return url;
@@ -54,7 +55,7 @@ public class ProductDiscountWebController {
     /* UPDATE */
 
     @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
-    public String update(Model model,  @PathVariable("id") String id) {
+    public String update(Model model, @PathVariable("id") String id) {
         ProductDiscount productDiscount = productDiscountService.get(id);
         Map<String, String> enabledMap = new LinkedHashMap<String, String>() {{
             put("true", "Включен");
@@ -86,7 +87,7 @@ public class ProductDiscountWebController {
             }};
             model.addAttribute("enabledMap", enabledMap);
             model.addAttribute("productDiscountForm", productDiscountForm);
-            model.addAttribute("errorMessage", errorMessage);
+            model.addAttribute("message", new Message(errorMessage, "danger"));
         } else {
             ProductDiscount productDiscount = new ProductDiscount(
                     productDiscountForm.getId(),
@@ -96,7 +97,7 @@ public class ProductDiscountWebController {
             );
             productDiscountService.update(productDiscount);
             model.addAttribute("productDiscounts", productDiscountService.getAll());
-            model.addAttribute("successMessage", "Скидка <strong>" + productDiscountForm.getName() + "</strong> обновлена!");
+            model.addAttribute("message", new Message("Скидка <strong>" + productDiscountForm.getName() + "</strong> обновлена!", "success"));
             url = "/productDiscount/list";
         }
         return url;

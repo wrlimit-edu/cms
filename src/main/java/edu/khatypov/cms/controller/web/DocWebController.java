@@ -2,6 +2,7 @@ package edu.khatypov.cms.controller.web;
 
 import edu.khatypov.cms.model.Customer;
 import edu.khatypov.cms.model.Doc;
+import edu.khatypov.cms.model.Message;
 import edu.khatypov.cms.model.Product;
 import edu.khatypov.cms.service.customer.impls.CustomerServiceImpl;
 import edu.khatypov.cms.service.doc.impls.DocServiceImpl;
@@ -9,10 +10,7 @@ import edu.khatypov.cms.service.product.impls.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -53,7 +51,7 @@ public class DocWebController {
     /* GET */
 
     @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
-    public String get(Model model,  @PathVariable("id") String id) {
+    public String get(Model model, @PathVariable("id") String id) {
         Doc doc = docService.get(id);
         model.addAttribute("doc", doc);
         return "/doc/get";
@@ -78,7 +76,7 @@ public class DocWebController {
     /* CUSTOMERS */
 
     @RequestMapping(value = "/customers/{id}", method = RequestMethod.GET)
-    public String customers(Model model,  @PathVariable("id") String id) {
+    public String customers(Model model, @PathVariable("id") String id) {
         model.addAttribute("doc", docService.get(id));
         model.addAttribute("customers", customerService.getAllByEnabled(true));
         return "/doc/customers";
@@ -99,7 +97,7 @@ public class DocWebController {
     /* PRODUCTS */
 
     @RequestMapping(value = "/products/{id}", method = RequestMethod.GET)
-    public String products(Model model,  @PathVariable("id") String id) {
+    public String products(Model model, @PathVariable("id") String id) {
         model.addAttribute("doc", docService.get(id));
         model.addAttribute("products", productService.getAll());
         return "/doc/products";
@@ -112,11 +110,9 @@ public class DocWebController {
         Doc doc = docService.get(docId);
         Product product = productService.get(productId);
         if (product.getAmount() < 1) {
-            String errorMessage = "Ошибка! Товара <strong>" + product.getName() + "</strong> больше нет в наличии!";
-            model.addAttribute("errorMessage", errorMessage);
+            model.addAttribute("message", new Message("Ошибка! Товара <strong>" + product.getName() + "</strong> больше нет в наличии!", "danger"));
         } else if (doc.getProducts() != null && doc.getProducts().contains(product) == true) {
-            String errorMessage = "Ошибка! Товар <strong>" + product.getName() + "</strong> уже есть в заказе!";
-            model.addAttribute("errorMessage", errorMessage);
+            model.addAttribute("message", new Message("Ошибка! Товар <strong>" + product.getName() + "</strong> уже есть в заказе!", "danger"));
         } else {
             product.setAmount(product.getAmount() - 1);
             productService.update(product);
@@ -137,7 +133,7 @@ public class DocWebController {
     /* EDIT TYPE */
 
     @RequestMapping(value = "/editType/{id}", method = RequestMethod.GET)
-    public String editType(Model model,  @PathVariable("id") String id) {
+    public String editType(Model model, @PathVariable("id") String id) {
         Doc doc = docService.get(id);
         if (doc.getType() == true) {
             doc.setType(false);
@@ -152,19 +148,16 @@ public class DocWebController {
     /* COMPLETE */
 
     @RequestMapping(value = "/complete/{id}", method = RequestMethod.GET)
-    public String complete(Model model,  @PathVariable("id") String id) {
+    public String complete(Model model, @PathVariable("id") String id) {
         Doc doc = docService.get(id);
         if (doc.getCustomer() == null) {
-            String errorMessage = "Ошибка! Не выбран клиент!";
-            model.addAttribute("errorMessage", errorMessage);
+            model.addAttribute("message", new Message("Ошибка! Не выбран клиент!", "danger"));
         } else if (doc.getProductsAmount() == 0) {
-            String errorMessage = "Ошибка! В документе нет товаров!";
-            model.addAttribute("errorMessage", errorMessage);
+            model.addAttribute("message", new Message("Ошибка! В документе нет товаров!", "danger"));
         } else {
             doc.setStatus(false);
             docService.update(doc);
-            String successMessage = "Документ успешно закрыт!";
-            model.addAttribute("successMessage", successMessage);
+            model.addAttribute("message", new Message("Документ успешно закрыт!", "success"));
         }
         model.addAttribute("doc", doc);
         return "/doc/get";
@@ -201,8 +194,7 @@ public class DocWebController {
             doc.getProducts().get(productIndex).setAmount(doc.getProducts().get(productIndex).getAmount() + 1);
             doc = docService.update(doc);
         } else {
-            String errorMessage = "Ошибка! Товара <strong>" + product.getName() + "</strong> больше нет в наличии!";
-            model.addAttribute("errorMessage", errorMessage);
+            model.addAttribute("message", new Message("Ошибка! Товара <strong>" + product.getName() + "</strong> больше нет в наличии!", "danger"));
         }
         model.addAttribute("doc", doc);
         return "/doc/get";
@@ -228,5 +220,24 @@ public class DocWebController {
         doc = docService.update(doc);
         model.addAttribute("doc", doc);
         return "/doc/get";
+    }
+
+    /* SEARCH */
+
+    @RequestMapping(value = "/searchProduct/{docId}", method = RequestMethod.POST)
+    public String search(Model model, @ModelAttribute("search") String search, @PathVariable("docId") String docId) {
+        model.addAttribute("doc", docService.get(docId));
+        if (search.length() < 3) {
+            model.addAttribute("products", productService.getAll());
+            model.addAttribute("message", new Message("Ошибка! Для поиска введите не менее трёх символов!", "danger"));
+        } else {
+            List<Product> products = productService.getAllByNameIsLike(search);
+            if (products.size() > 0) {
+                model.addAttribute("products", products);
+            } else {
+                model.addAttribute("message", new Message("Ошибка! По запросу <strong>" + search + "</strong> ничего не найдено!", "danger"));
+            }
+        }
+        return "/doc/products";
     }
 }

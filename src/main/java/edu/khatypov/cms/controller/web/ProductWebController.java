@@ -1,6 +1,7 @@
 package edu.khatypov.cms.controller.web;
 
 import edu.khatypov.cms.forms.ProductForm;
+import edu.khatypov.cms.model.Message;
 import edu.khatypov.cms.model.Product;
 import edu.khatypov.cms.model.ProductDiscount;
 import edu.khatypov.cms.service.product.impls.ProductServiceImpl;
@@ -53,14 +54,14 @@ public class ProductWebController {
         );
         productService.create(product);
         model.addAttribute("products", productService.getAll());
-        model.addAttribute("successMessage", "Товар <strong>" + productForm.getName() + "</strong> добавлен!");
+        model.addAttribute("message", new Message("Товар <strong>" + productForm.getName() + "</strong> добавлен!", "success"));
         return "/product/list";
     }
 
     /* UPDATE */
 
     @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
-    public String update(Model model,  @PathVariable("id") String id) {
+    public String update(Model model, @PathVariable("id") String id) {
         Product product = productService.get(id);
         List<ProductDiscount> list = productDiscountService.getAllByEnabled(true);
         Map<String, String> productDiscountMap = new LinkedHashMap<String, String>();
@@ -98,7 +99,7 @@ public class ProductWebController {
         );
         productService.update(product);
         model.addAttribute("products", productService.getAll());
-        model.addAttribute("successMessage", "Товат <strong>" + productForm.getName() + "</strong> обновлен!");
+        model.addAttribute("message", new Message("Товар <strong>" + productForm.getName() + "</strong> обновлен!", "success"));
         return "/product/list";
     }
 
@@ -116,13 +117,13 @@ public class ProductWebController {
     public String search(Model model, @ModelAttribute("search") String search) {
         if (search.length() < 3) {
             model.addAttribute("products", productService.getAll());
-            model.addAttribute("errorMessage", "Ошибка! Для поиска введите не менее 3 символов!");
+            model.addAttribute("message", new Message("Ошибка! Для поиска введите не менее трёх символов!", "danger"));
         } else {
             List<Product> products = productService.getAllByNameIsLike(search);
             if (products.size() > 0) {
                 model.addAttribute("products", products);
             } else {
-                model.addAttribute("errorMessage", "Ошибка! По запросу <strong>" + search + "</strong> ничего не найдено!");
+                model.addAttribute("message", new Message("Ошибка! По запросу <strong>" + search + "</strong> ничего не найдено!", "danger"));
             }
         }
         return "/product/list";

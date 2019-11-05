@@ -12,16 +12,6 @@
                     </div>
                 </li>
                 <li class="list-group-item my-form-group-body">
-
-                    <#if errorMessage??>
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            ${errorMessage}
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                    </#if>
-
                     <div class="form-group row">
                         <label class="col-sm-3 col-form-label">Название</label>
                         <div class="col-sm-9">
@@ -31,7 +21,7 @@
                     <div class="form-group row">
                         <label class="col-sm-3 col-form-label">Процент скидки</label>
                         <div class="col-sm-9">
-                            <@spring.formInput "productDiscountForm.value" "class='form-control' min='1' max='20' step='1'" "number"/>
+                            <@spring.formInput "productDiscountForm.value" "class='form-control' min='1' max='50' step='1'" "number"/>
                         </div>
                     </div>
                 </li>

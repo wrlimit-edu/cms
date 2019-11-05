@@ -1,31 +1,13 @@
 <#import "../common.ftl" as c/>
 <@c.page title="CMS / Товары">
 
-    <#if successMessage??>
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            ${successMessage}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    </#if>
-
-    <#if errorMessage??>
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            ${errorMessage}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    </#if>
-
     <ul class="list-group shadow-sm rounded">
         <li class="list-group-item p-0">
             <div class="d-flex flex-row">
-                <div class="my-list-group-header-icon" style="background-image: url(/images/icons48/box.png);"></div>
+                <div class="my-list-group-header-icon" style="background-image: url(/images/icons48/products.png);"></div>
                 <div class="my-list-group-header-title">Товары</div>
                 <div class="ml-auto my-list-group-header-btns">
-                    <a class="btn btn-sm btn-outline-secondary" href="/customer/create">Добавить товар</a>
+                    <a class="btn btn-sm btn-outline-secondary" href="/product/create">Добавить товар</a>
                 </div>
                 <div class="my-list-group-header-search">
                     <form name="searchForm" action="/product/search" method="post">

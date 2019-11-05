@@ -2,6 +2,7 @@ package edu.khatypov.cms.controller.web;
 
 import edu.khatypov.cms.forms.CustomerDiscountForm;
 import edu.khatypov.cms.model.CustomerDiscount;
+import edu.khatypov.cms.model.Message;
 import edu.khatypov.cms.service.customerDiscount.impls.CustomerDiscountServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,7 +37,7 @@ public class CustomerDiscountWebController {
         }
         if (errorMessage != null) {
             model.addAttribute("customerDiscountForm", customerDiscountForm);
-            model.addAttribute("errorMessage", errorMessage);
+            model.addAttribute("message", new Message(errorMessage, "danger"));
         } else {
             CustomerDiscount customerDiscount = new CustomerDiscount(
                     customerDiscountForm.getName(),
@@ -45,7 +46,7 @@ public class CustomerDiscountWebController {
             );
             customerDiscountService.create(customerDiscount);
             model.addAttribute("customerDiscounts", customerDiscountService.getAll());
-            model.addAttribute("successMessage", "Скидка <strong>" + customerDiscountForm.getName() + "</strong> добавлена!");
+            model.addAttribute("message", new Message("Скидка <strong>" + customerDiscountForm.getName() + "</strong> добавлена!", "success"));
             url = "/customerDiscount/list";
         }
         return url;
@@ -54,7 +55,7 @@ public class CustomerDiscountWebController {
     /* UPDATE */
 
     @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
-    public String update(Model model,  @PathVariable("id") String id) {
+    public String update(Model model, @PathVariable("id") String id) {
         CustomerDiscount customerDiscount = customerDiscountService.get(id);
         Map<String, String> enabledMap = new LinkedHashMap<String, String>() {{
             put("true", "Включен");
@@ -85,7 +86,7 @@ public class CustomerDiscountWebController {
             }};
             model.addAttribute("enabledMap", enabledMap);
             model.addAttribute("customerDiscountForm", customerDiscountForm);
-            model.addAttribute("errorMessage", errorMessage);
+            model.addAttribute("message", new Message(errorMessage, "danger"));
         } else {
             CustomerDiscount customerDiscount = new CustomerDiscount(
                     customerDiscountForm.getId(),
@@ -95,7 +96,7 @@ public class CustomerDiscountWebController {
             );
             customerDiscountService.update(customerDiscount);
             model.addAttribute("customerDiscounts", customerDiscountService.getAll());
-            model.addAttribute("successMessage", "Скидка <strong>" + customerDiscountForm.getName() + "</strong> обновлена!");
+            model.addAttribute("message", new Message("Скидка <strong>" + customerDiscountForm.getName() + "</strong> обновлена!", "success"));
             url = "/customerDiscount/list";
         }
         return url;

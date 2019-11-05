@@ -15,7 +15,7 @@
                     <div class="my-pg-btn-name">Все документы</div>
                 </button>
                 <button type="button" class="btn btn-outline-secondary btn-lg my-pg-btn"
-                        style="background-image: url(/images/icons48/box.png);"
+                        style="background-image: url(/images/icons48/products.png);"
                         onClick="location.href='/product/list'">
                     <div class="my-pg-btn-name">Все товары</div>
                 </button>

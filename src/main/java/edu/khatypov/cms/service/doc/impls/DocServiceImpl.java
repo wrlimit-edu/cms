@@ -1,7 +1,6 @@
 package edu.khatypov.cms.service.doc.impls;
 
 import edu.khatypov.cms.model.Doc;
-import edu.khatypov.cms.model.Product;
 import edu.khatypov.cms.repository.DocRepository;
 import edu.khatypov.cms.service.customer.impls.CustomerServiceImpl;
 import edu.khatypov.cms.service.doc.interfaces.IDocService;
