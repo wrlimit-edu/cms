@@ -10,6 +10,15 @@
         </div>
     </#if>
 
+    <#if errorMessage??>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            ${errorMessage}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </#if>
+
     <ul class="list-group shadow-sm rounded">
         <li class="list-group-item p-0">
             <div class="d-flex flex-row">
@@ -44,17 +53,19 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <#list products as product>
-                        <tr>
-                            <td class="my-table-code">${product.number?string["00000"]}</td>
-                            <td>${product.name}</td>
-                            <td>${product.description}</td>
-                            <td>${product.getFullPriceString()}</td>
-                            <td>${product.productDiscount.name} (${product.productDiscount.value}%)</td>
-                            <td>${product.amount}</td>
-                            <td class="my-table-edit" style="background-image: url(/images/icons48/edit.png);" onClick="location.href='/product/update/${product.id}'"></td>
-                        </tr>
-                    </#list>
+                    <#if products??>
+                        <#list products as product>
+                            <tr>
+                                <td class="my-table-code">${product.number?string["00000"]}</td>
+                                <td>${product.name}</td>
+                                <td>${product.description}</td>
+                                <td>${product.getFullPriceString()}</td>
+                                <td>${product.productDiscount.name} (${product.productDiscount.value}%)</td>
+                                <td>${product.amount}</td>
+                                <td class="my-table-edit" style="background-image: url(/images/icons48/edit.png);" onClick="location.href='/product/update/${product.id}'"></td>
+                            </tr>
+                        </#list>
+                    </#if>
                 </tbody>
             </table>
         </li>

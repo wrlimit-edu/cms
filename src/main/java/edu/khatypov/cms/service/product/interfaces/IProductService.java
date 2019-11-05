@@ -12,4 +12,5 @@ public interface IProductService {
     List<Product> getAll();
 
     Product getByMaxNumber();
+    List<Product> getAllByNameIsLike(String name);
 }

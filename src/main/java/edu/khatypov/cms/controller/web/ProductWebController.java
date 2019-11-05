@@ -114,14 +114,17 @@ public class ProductWebController {
 
     @RequestMapping(value = "/search", method = RequestMethod.POST)
     public String search(Model model, @ModelAttribute("search") String search) {
-
-        /////////////////////////
-
-        System.out.println(search);
-
-        /////////////////////////
-
-        model.addAttribute("products", productService.getAll());
+        if (search.length() < 3) {
+            model.addAttribute("products", productService.getAll());
+            model.addAttribute("errorMessage", "Ошибка! Для поиска введите не менее 3 символов!");
+        } else {
+            List<Product> products = productService.getAllByNameIsLike(search);
+            if (products.size() > 0) {
+                model.addAttribute("products", products);
+            } else {
+                model.addAttribute("errorMessage", "Ошибка! По запросу <strong>" + search + "</strong> ничего не найдено!");
+            }
+        }
         return "/product/list";
     }
 }

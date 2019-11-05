@@ -104,4 +104,9 @@ public class ProductServiceImpl implements IProductService {
     public Product getByMaxNumber() {
         return productRepository.findTopByOrderByNumberDesc();
     }
+
+    @Override
+    public List<Product> getAllByNameIsLike(String name) {
+        return productRepository.findAllByNameIsLikeIgnoreCase(name);
+    }
 }
