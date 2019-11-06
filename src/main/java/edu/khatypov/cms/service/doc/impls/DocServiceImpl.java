@@ -27,7 +27,7 @@ public class DocServiceImpl implements IDocService {
     @Autowired
     ProductServiceImpl productService;
 
-    /* temp */
+    /* temp *
     @PostConstruct
     void init() {
         List<Doc> list = new ArrayList<>(

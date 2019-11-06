@@ -20,7 +20,7 @@ public class ProductServiceImpl implements IProductService {
     @Autowired
     ProductDiscountServiceImpl productDiscountService;
 
-    /* temp */
+    /* temp *
     @PostConstruct
     void init() {
         productRepository.deleteAll();

@@ -25,7 +25,7 @@ public class CustomerServiceImpl implements ICustomerService {
     @Autowired
     CustomerDiscountServiceImpl customerDiscountService;
 
-    /* temp */
+    /* temp *
     @PostConstruct
     void init() {
         customerRepository.deleteAll();

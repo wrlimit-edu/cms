@@ -16,7 +16,7 @@ public class PersonServiceImpl implements IPersonService {
     @Autowired
     PersonRepository personRepository;
 
-    /* temp */
+    /* temp *
     @PostConstruct
     void init() {
         personRepository.deleteAll();

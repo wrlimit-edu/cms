@@ -17,7 +17,7 @@ public class ProductDiscountServiceImpl implements IProductDiscountService {
     @Autowired
     ProductDiscountRepository productDiscountRepository;
 
-    /* temp */
+    /* temp *
     @PostConstruct
     void init() {
         productDiscountRepository.deleteAll();
